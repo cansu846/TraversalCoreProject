@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,7 @@ namespace EntityLayer
     //About sayfasının altındaki kısım için oluşturulmuştur
     public class About2
     {
+        [Key]
         public int About2ID { get; set; }
         public string Title1 { get; set; }
         public string Title2 { get; set; }

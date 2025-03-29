@@ -5,3 +5,7 @@ TRAVERSAL PROJESİ
 3. DataAccessLayer adında CLASS LIBRARY PROJESI OLUŞTUR
 4. BussinessLayer adında CLASS LIBRARY PROJESI OLUŞTUR
 
+DbContext Sınıfı EFCore paketi tarafınfan saglanır.
+Context sınınfı DbContexten miras alınarak oluşturulur.
+
+OnConfiguring metodu: EfCore un veritabanı baglantı ayarlarını yapılandırır. Metot protected yapılır boylece sadece ilgili sınıf ve o sınıftan tureyen metotlar erişebilir.
