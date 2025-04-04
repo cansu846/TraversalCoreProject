@@ -1,0 +1,27 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+<!--banner-slider-->
+<!-- main-slider -->
+@await Component.InvokeAsync("_SliderPartial")
+<!-- /main-slider -->
+
+<!-- //banner-slider-->
+<!--/grids-->
+@await Component.InvokeAsync("_DestinationPartial")
+<!--//grids-->
+<!-- stats -->
+@await Component.InvokeAsync("_StatisticPartial")
+<!-- //stats -->
+<!--/-->
+@await Component.InvokeAsync("_FeaturePartial")
+<!-- //stats -->
+<!--/w3l-bottom-->
+@await Component.InvokeAsync("_SubAboutPartial")
+<!--//w3l-bottom-->
+<!-- testimonials -->
+@await Component.InvokeAsync("_TestimonialPartial")
+<!-- //testimonials -->

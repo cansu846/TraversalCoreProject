@@ -9,3 +9,29 @@ DbContext Sınıfı EFCore paketi tarafınfan saglanır.
 Context sınınfı DbContexten miras alınarak oluşturulur.
 
 OnConfiguring metodu: EfCore un veritabanı baglantı ayarlarını yapılandırır. Metot protected yapılır boylece sadece ilgili sınıf ve o sınıftan tureyen metotlar erişebilir.
+
+
+using keyword, nesnenin otomatik olarak dispose edilmesini sağlar. Nesne kullanıldıktan sonra bellekten temizlenir.
+
+
+Business ve ui kısmına  fluent validation aspnet paketi kurulacak
+
+
+AspNet Core, MVC Farkı:
+	
+	Coklu platformu destekleyen(Wimdows,Linux,macos) bir framework tur.
+	Web Api, Razor Pages, Blazor gibi mimarileri destekler.
+MVC:
+	Bir yazılım mimari desendir.
+	Asp.Net içinde bir web uygulaması geliştirmme yontemi olarak kullanılır.
+
+  Asp.Net bir framework tur. Mvc tasarım desenidir.
+
+
+PartialView, ViewComponenet Farkı Nedir
+
+PartialView sadece Html tekrarını azaltmak için kullanılır. Ana View den veri alır. İş mantıgı barındırmaz. Controllerdan cagırılmaz sadece Ana View den cagırılır. 
+
+ViewComponenet
+
+	Controller ve Viewden bagımsızdır. Kendşne ait business logic içerebilir.
