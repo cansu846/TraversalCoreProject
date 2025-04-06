@@ -35,3 +35,35 @@ PartialView sadece Html tekrarını azaltmak için kullanılır. Ana View den ve
 ViewComponenet
 
 	Controller ve Viewden bagımsızdır. Kendşne ait business logic içerebilir.
+
+Asp.net core Mvc Metot geri dönüş tipleri:
+	IActionResult
+	async Task<IActionResult>   
+	JsonResult
+	async Task<FileResult> 
+
+
+	Async, Veri tabanı işelemleri,api cagrılarında gibi uzun işlemleri async calıştırır boyleleikle sunucular bloke edilemz ve diğer işlemler de bekletilmeden gerçekleştirilir.
+	
+Set<T>()
+	T türündeki bir varlık (entity) için ilgili DbSet'i (veri tabanı tablosunu) tehsil eder.
+	Find(id), Add(), Remove(), ToList() gibi işlemleri yapabilmenizi sağlar.
+	Context içindeki belirli bir varlık türü için sorgulama yapmayı kolaylaştırır.
+
+ Expression Nedir?
+	 C#'ta LINQ (Language Integrated Query) ile dinamik filtreleme yapmayı sağlayan bir ifade ağacı (Expression Tree) türüdür. Bu ifade, veritabanı sorgularına çevrilebilir ve Entity Framework gibi ORM'ler tarafından SQL sorgularına 	dönüştürülerek doğrudan veritabanında çalıştırılabilir.
+	
+	Func<T, bool> nedir?
+	T → Generic bir sınıf veya entity (örneğin: Comment, Product, User vb.).
+
+	Func<T, bool> → T türünde bir nesneyi alıp, bool (true/false) döndüren bir fonksiyondur.
+
+	Örneğin: c => c.CommentState == true ifadesi bir Func<Comment, bool> ifadesidir.
+
+	Expression<Func<T, bool>> nedir?
+
+	Expression<> → Bu ifade bir Expression Tree (ifade ağacı) oluşturur.
+
+	Entity Framework bu ifadeyi SQL'e çevirebilir!
+
+	Normal Func<T, bool> ile farkı, bu ifadenin veritabanında işlenmek üzere bir sorgu haline getirilmesidir.
