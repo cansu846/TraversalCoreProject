@@ -67,3 +67,48 @@ Set<T>()
 	Entity Framework bu ifadeyi SQL'e çevirebilir!
 
 	Normal Func<T, bool> ile farkı, bu ifadenin veritabanında işlenmek üzere bir sorgu haline getirilmesidir.
+
+
+Html helper, tag helper nedir, farkları nelerdir?
+
+1. HTML Helper Nedir?
+HTML Helper, C# kodu ile HTML etiketi oluşturmamızı sağlayan bir yapıdır.
+ASP.NET MVC’nin eski sürümlerinden beri kullanılan bir tekniktir.
+
+✅ Özellikleri:
+
+C# kodu kullanarak HTML oluşturur.
+
+Razor dosyasında (.cshtml) @Html veya @Form gibi yardımcı metotlar kullanılır.
+
+HTML etiketleri metotlar ile oluşturulur.
+ 2. Tag Helper Nedir?
+Tag Helper, HTML etiketleri içinde C# kodu çalıştırmamızı sağlayan ASP.NET Core’un modern bir özelliğidir.
+HTML ile daha doğal bir yazım formatı sunduğu için HTML Helper’ın yerini almıştır.
+
+✅ Özellikleri:
+
+HTML etiketleri ile direkt çalışır, C# kodu gibi görünmez.
+
+HTML dosyasında özel Tag Helper’lar kullanılabilir.
+
+Daha okunaklı ve anlaşılır bir yapı sunar.
+
+Eski ASP.NET MVC sürümleriyle uyumlu değildir (sadece ASP.NET Core’da kullanılır).
+
+Bütün projelerde varsayılan olarak etkin değil, bazı durumlarda _ViewImports.cshtml içinde @addTagHelper ile etkinleştirilmesi gerekir.
+
+ornek:
+<input asp-for="UserName" class="form-control" placeholder="Enter username" />
+
+Bu kodun ürettiği HTML çıktısı:
+<input type="text" id="UserName" name="UserName" class="form-control" placeholder="Enter username" />
+
+asp-validation-summary Nedir?
+	Bu özellik, form gönderildiğinde oluşan doğrulama hatalarını bir liste halinde göstermeye yarar.
+
+3 farklı değer alabilir:
+
+None (Varsayılan),	Hiçbir doğrulama mesajını göstermez.
+ModelOnly,	Sadece model düzeyindeki hataları gösterir.
+All,	Hem model düzeyindeki, hem de bireysel alan (field) hatalarını gösterir.
