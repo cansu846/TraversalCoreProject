@@ -112,3 +112,7 @@ asp-validation-summary Nedir?
 None (Varsayılan),	Hiçbir doğrulama mesajını göstermez.
 ModelOnly,	Sadece model düzeyindeki hataları gösterir.
 All,	Hem model düzeyindeki, hem de bireysel alan (field) hatalarını gösterir.
+
+
+@model	View için kullanılacak modelin türünü tanımlar. (@model Product)
+@Model	View içinde modele erişmek için kullanılır. (@Model.Name)

@@ -1,0 +1,49 @@
+﻿@using EntityLayer.Concrete
+@model List<Destination>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-header text-center pb-3">
+                    <h6 class="font-weight-bolder">Destinations</h6>
+                </div>
+                <div class="card-body px-0 pt-0 pb-2">
+                    <div class="table-responsive p-2">
+                        <table class="table align-items-center mb-0">
+                            <thead>
+                                <tr>
+                                    <th class="">#</th>
+                                    <th class="">City</th>
+                                    <th class="">Day Nigth</th>
+                                    <th class=" p-2">Capacity</th>
+                                    <th class="">Price</th>
+                                    <th class="">Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach(var item in Model){
+                                    <tr>
+                                        <td>@item.DestinationID</td>
+                                        <td >@item.City</td>
+                                        <td>@item.DayNight</td>
+                                        <td class="p-2">@item.Capacity</td>
+                                        <td>@item.Price</td>
+                                        <td><a href="#" class="btn btn-outline-info">Detail</a></td>
+                                    </tr>
+                                   
+                                }
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
