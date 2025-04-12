@@ -1,5 +1,39 @@
-﻿
+﻿@model UserEditViewModel
 @{
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
 <h1>Index</h1>
+
+@* enctype -->dosya kaydetme işlemi için gerekli *@
+ <form method="post" enctype="multipart/form-data">
+
+    @Html.Label("Name")
+    <input type="text" asp-for="Name" class="form-control"/>
+    <br />
+     @Html.Label("Surname")
+    <input type="text" asp-for="Surname" class="form-control"/>
+    <br />
+     @Html.Label("UserName")
+    <input type="text" asp-for="UserName" class="form-control"/>
+    <br />
+    @Html.Label("Email")
+    <input type="text" asp-for="EMail" class="form-control" />
+    <br />
+     @Html.Label("Phone Number")
+    <input type="text" asp-for="PhoneNumber" class="form-control"/>
+    <br />
+    @*  @Html.Label("Image Url")
+    <input type="text" asp-for="ImageUrl" class="form-control"/>
+    <br /> *@
+     @Html.Label("Password")
+    <input type="password" asp-for="Password" class="form-control"/>
+    <br />
+     @Html.Label("Confirmation Password")
+    <input type="text" asp-for="ConfirmPassword" class="form-control"/>
+    <br />
+   <div class="form-group">
+       <input type="file" asp-for="Image"/>
+   </div>
+   <br />
+   <button class="btn btn-success">Update Profile</button>
+</form>

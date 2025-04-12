@@ -116,3 +116,18 @@ All,	Hem model düzeyindeki, hem de bireysel alan (field) hatalarını gösterir
 
 @model	View için kullanılacak modelin türünü tanımlar. (@model Product)
 @Model	View içinde modele erişmek için kullanılır. (@Model.Name)
+
+
+
+IFormFile Ne İşe Yarar?
+
+IFormFile, ASP.NET Core içinde kullanılan bir arabirimdir ve HTTP istekleriyle gelen dosyaları (örneğin, resim, PDF, metin dosyaları vb.) sunucu tarafında işlemek için kullanılır. Özellikle form tabanlı dosya yüklemelerinde kullanılır.
+
+
+Kullanıcıların web formu aracılığıyla yüklediği dosyaları alır.
+
+Bellekte veya geçici bir dosya sisteminde saklanabilir.
+
+Dosyanın boyutu, adı, içerik türü gibi bilgilerine erişim sağlar.
+
+Dosyayı doğrudan belleğe veya bir akışa (stream) yazdırabilir.
