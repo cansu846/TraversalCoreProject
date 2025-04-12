@@ -2,10 +2,12 @@
 using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace TraversalCoreProject.Areas.Member.Controllers
 {
@@ -16,11 +18,32 @@ namespace TraversalCoreProject.Areas.Member.Controllers
         private readonly IDestinationService _destinationService = new DestinationManager(new EfDestinationDal());
         private readonly IReservationService _reservationService = new ReservationManager(new EfReservationDal());
 
+        private readonly UserManager<AppUser> _userManager;
+
+        public RezervationController(UserManager<AppUser> userManager)
+        {
+            _userManager = userManager;
+        }
+
         [HttpGet]
-        public IActionResult CurrentReservation()
+        public IActionResult MyCurrentReservation()
         {
             var valeus = _reservationService.TGetList();
             return View(valeus);
+        }
+
+        [HttpGet]
+        public IActionResult MyOldReservation()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> MyApprovalReservation()
+        {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            var values = _reservationService.GetListApprovalReservation(user.Id);    
+            return View(values);
         }
 
         [HttpGet]

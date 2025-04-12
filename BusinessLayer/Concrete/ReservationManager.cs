@@ -18,6 +18,12 @@ namespace BusinessLayer.Concrete
             _reservationDal = reservationDal;
         }
 
+        public List<Reservation> GetListApprovalReservation(int userId)
+        {
+            return _reservationDal.GetListByFilter(x=>x.AppUserId==userId);
+          
+        }
+
         public void TAdd(Reservation t)
         {
             _reservationDal.Insert(t);
