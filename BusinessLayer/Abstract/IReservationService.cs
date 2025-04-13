@@ -9,7 +9,10 @@ namespace BusinessLayer.Abstract
 {
     public interface IReservationService:IGenericService<Reservation> 
     {
-        List<Reservation> GetListApprovalReservation(int userId);
+        //List<Reservation> GetListApprovalReservation(int userId);
+        List<Reservation> GetListWithReservationByAccepted(int userId);
+        List<Reservation> GetListWithReservationByPrevious(int userId);
+        List<Reservation> GetListWithReservationByApproval(int userId);
     }
     
 }

@@ -26,23 +26,26 @@ namespace TraversalCoreProject.Areas.Member.Controllers
         }
 
         [HttpGet]
-        public IActionResult MyCurrentReservation()
+        public async Task<IActionResult> MyCurrentReservation()
         {
-            var valeus = _reservationService.TGetList();
-            return View(valeus);
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            var values = _reservationService.GetListWithReservationByAccepted(user.Id);
+            return View(values);
         }
 
         [HttpGet]
-        public IActionResult MyOldReservation()
+        public async Task<IActionResult> MyOldReservation()
         {
-            return View();
+            var user = _userManager.FindByNameAsync(User.Identity.Name);
+            var values = _reservationService.GetListWithReservationByPrevious(user.Id);
+            return View(values);
         }
 
         [HttpGet]
         public async Task<IActionResult> MyApprovalReservation()
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
-            var values = _reservationService.GetListApprovalReservation(user.Id);    
+            var values = _reservationService.GetListWithReservationByApproval(user.Id);    
             return View(values);
         }
 
