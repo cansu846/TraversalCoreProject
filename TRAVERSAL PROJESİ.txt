@@ -131,3 +131,11 @@ Bellekte veya geçici bir dosya sisteminde saklanabilir.
 Dosyanın boyutu, adı, içerik türü gibi bilgilerine erişim sağlar.
 
 Dosyayı doğrudan belleğe veya bir akışa (stream) yazdırabilir.
+
+KODUN ANLAMI:
+context.Reservations.Include(x=>x.Destination).Where(x=>x.Status=="Onaylandı" && x.AppUserId==userId).ToList();
+
+ Bu rezervasyonların bağlı olduğu şehir (Destination) tablosunu da getir (JOIN yap).
+ Sadece "Onaylandı" olan ve belirli bir kullanıcıya ait kayıtları filtrele.
+ Rezervasyon bilgilerini hem de ilişkili şehir bilgilerini aynı anda çekER
+ View tarafında kolayca item.Destination.City gibi alanlara erişilebilir.
