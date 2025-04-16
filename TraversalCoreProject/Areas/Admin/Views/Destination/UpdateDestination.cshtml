@@ -1,0 +1,74 @@
+﻿@model Destination
+@{
+    ViewData["Title"] = "UpdateDestination";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="container col-md-9">
+        <div class="card mb-4">
+            <h5 class="card-header">Update Destination</h5>
+
+            <div class="card-body">
+                <form method="post" action="/Admin/Destination/UpdateDestination/">
+                    <input type="hidden" asp-for="DestinationID" />
+
+                    <div class="form-group" mb-3">
+                        <label class="form-label">City</label>
+                        <input type="text"
+                               class="form-control"
+                               asp-for="City" />
+                    </div>
+                    <div class="form-group" mb-3">
+                        <label class="form-label">Day Night</label>
+                        <input type="text"
+                               class="form-control"
+                               asp-for="DayNight" />
+                    </div>
+                    <div class="form-group" mb-3">
+                        <label class="form-label">Price</label>
+                        <input type="number"
+                               class="form-control"
+                               asp-for="Price" />
+                    </div>
+                    <div class="form-group" mb-3">
+                        <label class="form-label">Image</label>
+                        <input type="text"
+                               class="form-control"
+                               asp-for="Image" />
+                    </div>
+                    <div class="form-group" mb-3">
+                        <label class="form-label">Description</label>
+                        <textarea rows="5"
+                                  class="form-control"
+                                  asp-for="Description"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Capacity</label>
+                        <input type="number" asp-for="Capacity" class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Description2</label>
+                        <textarea rows="10"
+                                  class="form-control"
+                                  asp-for="Description2"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Description3</label>
+                        <textarea rows="10"
+                                  class="form-control"
+                                  asp-for="Description3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Image2</label>
+                        <input type="text"
+                               class="form-control"
+                               asp-for="Image2" />
+                    </div>
+                    <button class="btn btn-primary">Update</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
