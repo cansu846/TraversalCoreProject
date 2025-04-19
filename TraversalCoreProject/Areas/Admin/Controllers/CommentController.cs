@@ -17,5 +17,12 @@ namespace TraversalCoreProject.Areas.Admin.Controllers
             var values = _commentService.TGetCommentListWithDestination();
             return View(values);  
         }
+
+        public IActionResult DeleteComment(int id)
+        {
+            var comment = _commentService.TGetById(id); 
+            _commentService.TDelete(comment);
+            return RedirectToAction("Index");
+        }
     }
 }
