@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace TraversalCoreProject.Areas.Admin.Views.ViewComponents.Destination
+namespace TraversalCoreProject.Areas.Admin.ViewComponents.Dashboard
 {
-    public class _Navbar:ViewComponent
+    public class _DashboardBanner:ViewComponent
     {
         public IViewComponentResult Invoke()
         {

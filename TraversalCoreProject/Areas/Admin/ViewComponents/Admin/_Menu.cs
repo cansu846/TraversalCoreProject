@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace TraversalCoreProject.Areas.Admin.Views.ViewComponents.Admin
+namespace TraversalCoreProject.Areas.Admin.ViewComponents.Admin
 {
     public class _Menu:ViewComponent
     {
