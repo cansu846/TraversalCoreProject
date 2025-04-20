@@ -31,7 +31,7 @@
                             <td>@item.UserName</td>
                             <td>@item.Email</td>
                             <td>
-                                <a class="btn btn-warning" asp-controller="User" asp-action="CommentList" asp-route-id="@item.Id">Comments</a>
+                                <a class="btn btn-warning" href="/Admin/User/CommentList/@item.Id"> Comments</a>
                             </td>
                             <td>
                                 <a class="btn btn-success" href="/Admin/User/ReservationList/@item.Id">Reservations</a>

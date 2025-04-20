@@ -13,11 +13,15 @@ namespace TraversalCoreProject.Areas.Admin.Controllers
     {
         private readonly IAppUserService _appUserService;
         private readonly IReservationService _reservationService;
+        private readonly ICommentService _commnetService;
 
-        public UserController(IAppUserService appUserService, IReservationService reservationService)
+        public UserController(IAppUserService appUserService,
+            IReservationService reservationService,
+            ICommentService commentService)
         {
             _appUserService = appUserService;
             _reservationService = reservationService;
+            _commnetService = commentService;
         }
         public IActionResult Index()
         {
@@ -34,7 +38,7 @@ namespace TraversalCoreProject.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult UpdateUser(int id )
         {
-            var value = _appUserService.TGetById(id);
+            var value = _commnetService.TGetById(id);
             return View(value);
         }
 
@@ -57,10 +61,10 @@ namespace TraversalCoreProject.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpGet]   
-        public IActionResult CommentList()
+        [HttpGet("/Admin/User/CommentList/{userId}")]
+        public IActionResult CommentList(int userId)
         {
-            var values = _appUserService.TGetList();
+            var values = _commnetService.TGetCommentByUserId(userId);
             return View(values);
         }
 

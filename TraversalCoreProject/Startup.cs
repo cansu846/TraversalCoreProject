@@ -37,6 +37,9 @@ namespace TraversalCoreProject
             services.AddScoped<IReservationService, ReservationManager>();
             services.AddScoped<IReservationDal, EfReservationDal>();
 
+             services.AddScoped<ICommentService, CommentManager>();
+            services.AddScoped<ICommentDal, EfCommentDal>();
+
             //Entity Framework Core kullanarak veritabanı bağlantısını yapılandırır.
             //Context->Uygulamanın veri tabanı ile i,letişimini sagalar.
             services.AddDbContext<Context>();

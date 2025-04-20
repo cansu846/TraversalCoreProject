@@ -1,0 +1,51 @@
+﻿@model List<Comment>
+@{
+    ViewData["Title"] = "CommentList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    <div class="card mt-3">
+        <h5 class="card-header">Comment List</h5>
+        <div class="table-responsive text-nowrap">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>User</th>
+                        <th>Date</th>
+                        <th>Description</th>
+                        <th></th>
+
+                    </tr>
+                </thead>
+                <tbody class="table-border-bottom-0">
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.CommentId</td>
+                            <td>@item.CommentUser</td>
+                            <td>@item.CommentDate.ToString("d")</td>
+                            <td><span class="badge bg-label-primary me-1"> @item.CommentContent</span></td>
+                            <td>
+                                <div class="dropdown">
+                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="btn btn-info dropdown-item" asp-controller="Destination" asp-action="DestinationDetail" asp-route-id=""><i class="bx bx-search-alt me-1"></i> Detail</a>
+                                        <a class="btn btn-success dropdown-item" asp-area="Admin" asp-controller="Destination" asp-action="UpdateDestination" asp-route-id=""><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                                        <a class="btn btn-danger dropdown-item" asp-area="Admin" asp-controller="Destination" asp-action="DeleteDestination" asp-route-id=""><i class="bx bx-trash me-1"></i> Delete</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+         
+        </div>
+    </div>
+</div>
