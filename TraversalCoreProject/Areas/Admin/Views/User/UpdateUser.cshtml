@@ -1,0 +1,60 @@
+﻿@model AppUser
+@{
+    ViewData["Title"] = "UpdateUser";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="container col-md-9">
+        <div class="card mb-4">
+            <h5 class="card-header">Update User</h5>
+
+            <div class="card-body">
+                <form method="post" action="/Admin/User/UpdateUser/">
+                    <input type="hidden" asp-for="Id" />
+
+                    <div class="form-group" mb-3">
+                        <label class="form-label">Name</label>
+                        <input type="text"
+                               class="form-control"
+                               asp-for="Name" />
+                    </div>
+                    <div class="form-group" mb-3">
+                        <label class="form-label">Surname</label>
+                        <input type="text"
+                               class="form-control"
+                               asp-for="Surname" />
+                    </div>
+               <br />
+                    <div class="input-group" mb-3">
+                        <label class="input-group-text" for="inputGroupSelect01">Gender</label>
+                        <select class="form-select" asp-for="Gender" id="inputGroupSelect01">
+                            <option value="Female" selected>Female</option>
+                            <option value="Male">Male</option>
+                        </select>
+                    </div>
+                    <div class="form-group" mb-3">
+                        <label class="form-label">UserName</label>
+                        <input type="text"
+                               class="form-control"
+                               asp-for="UserName" />
+                    </div>
+                    <div class="form-group" mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="text"
+                               class="form-control"
+                               asp-for="Email" />
+                    </div>
+                   
+                    <div class="form-group" mb-3">
+                        <label class="form-label">Phone Number</label>
+                        <input type="text"
+                               class="form-control"
+                               asp-for="PhoneNumber" />
+                    </div>
+                    <button class="btn btn-primary">Update</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

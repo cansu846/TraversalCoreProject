@@ -21,9 +21,12 @@ namespace BusinessLayer.Concrete
         //public List<Reservation> GetListApprovalReservation(int userId)
         //{
         //    return _reservationDal.GetListByFilter(x=>x.AppUserId==userId && x.Status=="Onay Bekliyor");
-          
-        //}
 
+        //}
+        public List<Reservation> GetReservationListByUserId(int userId)
+        {
+            return _reservationDal.GetReservationListByUserId(userId);
+        }
         public List<Reservation> GetListWithReservationByAccepted(int userId)
         {
             return _reservationDal.GetListWithReservationByAccepted(userId);

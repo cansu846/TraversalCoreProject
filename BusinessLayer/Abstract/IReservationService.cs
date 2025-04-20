@@ -13,6 +13,7 @@ namespace BusinessLayer.Abstract
         List<Reservation> GetListWithReservationByAccepted(int userId);
         List<Reservation> GetListWithReservationByPrevious(int userId);
         List<Reservation> GetListWithReservationByApproval(int userId);
+        List<Reservation> GetReservationListByUserId(int userId);
     }
     
 }

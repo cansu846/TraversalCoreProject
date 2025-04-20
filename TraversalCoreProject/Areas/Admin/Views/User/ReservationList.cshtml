@@ -1,0 +1,60 @@
+﻿@model List<Reservation>
+@{
+    ViewData["Title"] = "ReservationList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var count = 0;
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    <div class="card mt-3">
+        <h5 class="card-header">Reservation List</h5>
+        <div class="table-responsive text-nowrap">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>City</th>
+                        <th>Person Count</th>
+                        <th>Date</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                        <th></th>
+
+                    </tr>
+                </thead>
+                <tbody class="table-border-bottom-0">
+                    @foreach (var item in Model)
+                    {
+                        count = count + 1;
+                        <tr>
+                            <td>@count</td>
+                            <td>@item.Destination.City</td>
+                            <td>@item.PersonCount</td>
+                            <td>@item.ReservationDate.ToString("d")</td>
+                            <td>@item.Description</td>
+                            <td><span class="badge bg-label-primary me-1"> @item.Status</span></td>
+                            <td>
+                                <div class="dropdown">
+                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="btn btn-info dropdown-item" asp-controller="" asp-action="" asp-route-id="@item.ReservationId"><i class="bx bx-search-alt me-1"></i> Detail</a>
+                                        <a class="btn btn-success dropdown-item" asp-area="" asp-controller="" asp-action="" asp-route-id="@item.ReservationId"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                                        <a class="btn btn-danger dropdown-item" asp-area="Admin" asp-controller="User" asp-action="Delete" asp-route-id="@item.ReservationId"><i class="bx bx-trash me-1"></i> Delete</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+            <div class="flex justify-content-end">
+                <a href="/Admin/Destination/AddDestination" class="btn btn-primary lg m-3">Add</a>
+
+            </div>
+        </div>
+    </div>
+</div>
