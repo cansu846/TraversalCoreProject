@@ -9,5 +9,8 @@ namespace DataAccessLayer.Abstract
 {
     public interface IGuideDal:IGenericDal<Guide>
     {
+        void ChageToPassive(int guideId);
+        void ChageToActive(int guideId);
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using DataAccessLayer.Abstract;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.Repository;
 using EntityLayer.Concrete;
 using System;
@@ -9,7 +10,21 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.EntityFramework
 {
-    public class EfGuideDal:GenericRepository<Guide>, IGuideDal
+    public class EfGuideDal : GenericRepository<Guide>, IGuideDal
     {
+        Context context = new Context();
+        public void ChageToActive(int guideId)
+        {
+            var value = context.Guides.Find(guideId);
+            value.Status = true;
+            context.SaveChanges();  
+        }
+
+        public void ChageToPassive(int guideId)
+        {
+            var value = context.Guides.Find(guideId);
+            value.Status = false;
+            context.SaveChanges();
+        }
     }
 }

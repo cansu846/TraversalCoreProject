@@ -76,3 +76,4 @@ TestResult.xml
 nunit-*.xml
  
 DataAccessLayer/Migrations/
+/TraversalCoreProject/Areas/Admin/Views/Guide/Index.cshtml

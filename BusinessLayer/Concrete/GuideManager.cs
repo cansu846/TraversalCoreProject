@@ -21,6 +21,16 @@ namespace BusinessLayer.Concrete
             _GuideDal.Insert(t);
         }
 
+        public void TChangeToActive(int guideId)
+        {
+            _GuideDal.ChageToActive(guideId);
+        }
+
+        public void TChangeToPassive(int guideId)
+        {
+            _GuideDal.ChageToPassive(guideId);
+        }
+
         public void TDelete(Guide t)
         {
             _GuideDal.Delete(t);
@@ -28,7 +38,7 @@ namespace BusinessLayer.Concrete
 
         public Guide TGetById(int id)
         {
-            throw new NotImplementedException();
+            return _GuideDal.GetById(id);   
         }
 
         public List<Guide> TGetList()
