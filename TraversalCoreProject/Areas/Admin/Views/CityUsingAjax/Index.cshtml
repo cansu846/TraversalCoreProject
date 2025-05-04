@@ -6,29 +6,102 @@
 }
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-<button type="button" class="btn btn-outline-info" id="btngetlist">City List</button>
-
-<div id="citylist">
-    Here take place for Cities
+<div class="mt-5 mx-auto">
+    <button type="button" class="btn btn-outline-info" id="btngetlist">City List</button>
+    <button type="button" class="btn btn-outline-dark" id="btngetbyid">Get City By Id</button>
+    <button type="button" class="btn btn-outline-primary" id="btnadddestination">Add Destination</button>
+    <button type="button" class="btn btn-outline-success" id="btnupdate">Update Destination</button>
+    <button type="button" class="btn btn-outline-danger" id="btndelete">Delete Destination</button>
 </div>
 
+<div>
+    <input type="text" class="form-control" id="inputdestinationid" placeholder="Enter destination id" />
+</div>
+
+<div id="citybyid">
+   
+</div>
+
+<div id="citylist">
+</div>
+
+<div class="">
+    <input class="form-control" id="textcity" type="text" placeholder="city"/>
+    <input class="form-control" id="textdaynight" type="text" placeholder="daynight" />
+    <input class="form-control" id="textprice" type="text" placeholder="price" />
+</div>
 <script>
+ 
     $("#btngetlist").click(function () {
-        $.ajax({
-            contentType: "application/json",
-            dataType: "json",
-            type: "Get",
-            url: "/Admin/CityUsingAjax/CityList/",
-            success: function (func) {
-                console.log(func);
-                let tableHtml = "<table class=table table-bordered> <tr><th>#</th> <th>City</th> <th>Country</th></tr>";
-                $.each(func, (index,value)=>{
-                    tableHtml +=`<tr><td>${index}</td> <td>${value.cityName}</td> <td>${value.cityCountry}</td></tr>`;
+        // $.ajax({
+        //     contentType: "application/json",
+        //     dataType: "json",
+        //     type: "Get",
+        //     url: "/Admin/CityUsingAjax/CityList/",
+        //     success: function (func) {
+        //         console.log(func);
+        //         let tableHtml = "<table class=table table-bordered> <tr><th>#</th> <th>City</th> <th>Country</th></tr>";
+        //         $.each(func, (index,value)=>{
+        //             tableHtml +=`<tr><td>${index}</td> <td>${value.cityName}</td> <td>${value.cityCountry}</td></tr>`;
+        //         });
+
+        //         tableHtml += "</table>";
+        //         $("#citylist").html(tableHtml);
+        //     }
+        // });
+          
+        $.get("/Admin/CityUsingAjax/CityList/", function(func){
+               let w = jQuery.parseJSON(func);
+                console.log(w);
+              console.log(func);
+                let tableHtml = "<table class=table table-bordered> <tr><th>#</th> <th>City</th> <th>Day Night</th> <th>Price</th> </tr>";
+                $.each(w, (index,value)=>{
+                    tableHtml +=`<tr><td>${value.DestinationID}</td> <td>${value.City}</td> <td>${value.DayNight}</td> <td>${value.Price}</td></tr>`;
                 });
 
                 tableHtml += "</table>";
                 $("#citylist").html(tableHtml);
-            }
         });
+    });
+
+    $("#btnadddestination").click(function (){
+      $.post("/Admin/CityUsingAjax/AddDestination/",
+      {
+          City:$("#textcity").val(),
+          DayNight:$("#textdaynight").val(),
+          Price:$("#textprice").val(),
+      },
+      function(){
+          
+          alert("your destination successfully added");
+      }
+      );
+    });
+
+    $("#btngetbyid").click(function(){
+        var id = $("#inputdestinationid").val();
+        console.log(id);
+        $.get(`/Admin/CityUsingAjax/GetById/${id}`,
+        function(data){
+              let w = jQuery.parseJSON(data);
+                console.log(w);
+              console.log(data);
+             let tableHtml = "<table class=table table-bordered> <tr><th>#</th> <th>City</th> <th>Day Night</th> <th>Price</th> </tr>";
+
+             tableHtml +=`<tr><td>${w.DestinationID}</td> <td>${w.City}</td> <td>${w.DayNight}</td> <td>${w.Price}</td></tr>`;
+
+                tableHtml += "</table>";
+                $("#citybyid").html(tableHtml);
+        }
+    );
+    });
+ 
+    $("#btndelete").click(function(){
+        var id = $("#inputdestinationid").val();
+        $.get(`/Admin/CityUsingAjax/Delete/${id}`,
+        function(){
+            alert("Destination successfully deleted");
+        }
+        );
     });
 </script>

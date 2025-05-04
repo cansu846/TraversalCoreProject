@@ -52,6 +52,10 @@ namespace TraversalCoreProject
 
             services.AddScoped<IGuideService, GuideManager>();
             services.AddScoped<IGuideDal, EfGuideDal>();
+
+            services.AddScoped<IDestinationService, DestinationManager>();
+            services.AddScoped<IDestinationDal, EfDestinationDal>();
+
             //Entity Framework Core kullanarak veritabanı bağlantısını yapılandırır.
             //Context->Uygulamanın veri tabanı ile i,letişimini sagalar.
             services.AddDbContext<Context>();

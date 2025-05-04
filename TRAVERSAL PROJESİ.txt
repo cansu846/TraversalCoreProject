@@ -139,3 +139,8 @@ context.Reservations.Include(x=>x.Destination).Where(x=>x.Status=="Onaylandı" &
  Sadece "Onaylandı" olan ve belirli bir kullanıcıya ait kayıtları filtrele.
  Rezervasyon bilgilerini hem de ilişkili şehir bilgilerini aynı anda çekER
  View tarafında kolayca item.Destination.City gibi alanlara erişilebilir.
+
+
+@model ➔ Modelin türünü belirtir (başta kullanılır).
+
+@Model ➔ Modelin verisine erişir (içerikte kullanılır).
