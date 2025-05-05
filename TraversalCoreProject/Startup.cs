@@ -56,6 +56,9 @@ namespace TraversalCoreProject
             services.AddScoped<IDestinationService, DestinationManager>();
             services.AddScoped<IDestinationDal, EfDestinationDal>();
 
+            services.AddScoped<IContactSideUserMessageService, ContactSideUserMessageManager>();
+            services.AddScoped<IContactSideUserMessageDal, EfContactSideUserMessageDal>();
+
             //Entity Framework Core kullanarak veritabanı bağlantısını yapılandırır.
             //Context->Uygulamanın veri tabanı ile i,letişimini sagalar.
             services.AddDbContext<Context>();
