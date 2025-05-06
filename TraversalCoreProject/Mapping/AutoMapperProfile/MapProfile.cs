@@ -6,10 +6,13 @@ namespace TraversalCoreProject.Mapping.AutoMapperProfile
 {
     public class MapProfile : Profile
     {
-        protected MapProfile()
+        public MapProfile()
         {
             CreateMap<AnnouncementAddDto, Announcement>();
             CreateMap<Announcement, AnnouncementAddDto>();
+
+            CreateMap<AnnouncementListDto, Announcement>();
+            CreateMap<Announcement, AnnouncementListDto>();
         }
     }
 }

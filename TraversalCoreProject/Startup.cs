@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using BusinessLayer.Abstract;
 using BusinessLayer.Concrete;
 using BusinessLayer.ValidationRules;
@@ -48,7 +49,7 @@ namespace TraversalCoreProject
             //typeof(Startup) ifadesi, eşleme profillerinin (Profile sınıfı) nerede aranacağını belirtir.
             //Yani, AutoMapper Startup sınıfının bulunduğu assembly içinde tanımlı Profile sınıflarını bulup otomatik yükler.
 
-            //services.AddAutoMapper(typeof(Startup));
+            services.AddAutoMapper(typeof(Startup));
             //AnnouncementAddDto sınıfının doğrulamasını(validation) yapacak olan AnnouncementAddValidator sınıfını belirtir.
             //AddTransient ile bu validator, her ihtiyaç duyulduğunda yeniden oluşturularak kullanılır.
             //FluentValidation kullanılarak şöyle bir validator yazılır:

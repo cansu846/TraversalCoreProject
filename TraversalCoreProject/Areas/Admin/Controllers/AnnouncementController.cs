@@ -1,5 +1,7 @@
-﻿using BusinessLayer.Abstract;
+﻿using AutoMapper;
+using BusinessLayer.Abstract;
 using DocumentFormat.OpenXml.Office2010.ExcelAc;
+using DTOLayer.DTOs.AnnouncementDto;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -14,28 +16,32 @@ namespace TraversalCoreProject.Areas.Admin.Controllers
     public class AnnouncementController : Controller
     {
         private readonly IAnnouncementService _announcementService;
-
-        public AnnouncementController(IAnnouncementService announcementService)
+        private readonly IMapper _mapper;
+        public AnnouncementController(IAnnouncementService announcementService,
+            IMapper mapper)
         {
             _announcementService = announcementService;
+            _mapper = mapper;
         }
 
         public IActionResult Index()
         {
             List<Announcement> Annlist = _announcementService.TGetList();
 
-            List<AnnouncemenListViewModel> AnnViewModelList = new List<AnnouncemenListViewModel>();
+            //List<AnnouncemenListViewModel> AnnViewModelList = new List<AnnouncemenListViewModel>();
 
-            foreach (var item in Annlist)
-            {
-                AnnouncemenListViewModel model = new AnnouncemenListViewModel();
+            //foreach (var item in Annlist)
+            //{
+            //    AnnouncemenListViewModel model = new AnnouncemenListViewModel();
 
-                model.AnnouncementID = item.AnnouncementID;
-                model.Title = item.Title;   
-                model.Content = item.Content;
-                AnnViewModelList.Add(model);    
-            }
-            return View(AnnViewModelList);
+            //    model.AnnouncementID = item.AnnouncementID;
+            //    model.Title = item.Title;   
+            //    model.Content = item.Content;
+            //    AnnViewModelList.Add(model);    
+            //}
+
+            var values = _mapper.Map<List<AnnouncementListDto>>(Annlist);
+            return View(values);
         }
     }
 }
