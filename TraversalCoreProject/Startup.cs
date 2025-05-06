@@ -5,10 +5,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using BusinessLayer.Abstract;
 using BusinessLayer.Concrete;
+using BusinessLayer.ValidationRules;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
+using DTOLayer.DTOs.AnnouncementDto;
 using EntityLayer.Concrete;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -18,6 +22,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Model;
 
 namespace TraversalCoreProject
 {
@@ -40,6 +45,16 @@ namespace TraversalCoreProject
                 //uygulamayı debug modda calıstırınca logları outputta gosterir
                 x.AddDebug();
             });
+            //typeof(Startup) ifadesi, eşleme profillerinin (Profile sınıfı) nerede aranacağını belirtir.
+            //Yani, AutoMapper Startup sınıfının bulunduğu assembly içinde tanımlı Profile sınıflarını bulup otomatik yükler.
+
+            //services.AddAutoMapper(typeof(Startup));
+            //AnnouncementAddDto sınıfının doğrulamasını(validation) yapacak olan AnnouncementAddValidator sınıfını belirtir.
+            //AddTransient ile bu validator, her ihtiyaç duyulduğunda yeniden oluşturularak kullanılır.
+            //FluentValidation kullanılarak şöyle bir validator yazılır:
+            services.AddTransient<IValidator<AnnouncementAddDto>, AnnouncementAddValidator>();
+            //FluentValidation kütüphanesini ASP.NET Core MVC ile entegre eder. Böylece, gönderilen form verileri FluentValidation ile otomatik doğrulanır.
+            services.AddControllersWithViews().AddFluentValidation();
 
             services.AddScoped<IAppUserService,AppUserManager>();
             services.AddScoped<IAppUserDal, EfAppUserDal>();
@@ -55,6 +70,10 @@ namespace TraversalCoreProject
 
             services.AddScoped<IDestinationService, DestinationManager>();
             services.AddScoped<IDestinationDal, EfDestinationDal>();
+
+
+            services.AddScoped<IAnnouncementService, AnnouncementManager>();
+            services.AddScoped<IAnnouncementDal, EfAnnouncementDal>();
 
             services.AddScoped<IContactSideUserMessageService, ContactSideUserMessageManager>();
             services.AddScoped<IContactSideUserMessageDal, EfContactSideUserMessageDal>();
