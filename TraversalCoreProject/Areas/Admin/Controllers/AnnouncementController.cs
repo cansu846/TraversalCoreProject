@@ -5,6 +5,7 @@ using DTOLayer.DTOs.AnnouncementDto;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using TraversalCoreProject.Areas.Admin.Models;
 
@@ -42,6 +43,28 @@ namespace TraversalCoreProject.Areas.Admin.Controllers
 
             var values = _mapper.Map<List<AnnouncementListDto>>(Annlist);
             return View(values);
+        }
+
+        [HttpGet]
+        public IActionResult AddAnnouncement()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddAnnouncement(AnnouncementAddDto a)
+        {
+            if (ModelState.IsValid)
+            {
+                _announcementService.TAdd(new Announcement()
+                {
+                    Title = a.Title,
+                    Content = a.Content,
+                    Date = Convert.ToDateTime(DateTime.Now.ToShortDateString())
+                });
+                return RedirectToAction("Index");   
+            }
+            return View();
         }
     }
 }
