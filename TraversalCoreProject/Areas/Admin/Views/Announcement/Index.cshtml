@@ -18,6 +18,7 @@
                         <th>Title</th>
                         <th>Content</th>
                         <th>Detail</th>
+                        <th></th>
 
                     </tr>
                 </thead>
@@ -29,7 +30,7 @@
                             <td>@item.Title</td>
                             <td>@item.Content</td>
                             <td><span class="badge bg-label-primary me-1"> Detail</span></td>
-                          
+                            <td><a href="/Admin/Announcement/DeleteAnnouncement/@item.AnnouncementID" class="btn btn-danger small">Delete</a></td>
                         </tr>
 
                     }

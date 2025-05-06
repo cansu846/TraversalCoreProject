@@ -66,5 +66,13 @@ namespace TraversalCoreProject.Areas.Admin.Controllers
             }
             return View();
         }
+        
+        [HttpGet("/Admin/Announcement/DeleteAnnouncement/{id}")]  
+        public IActionResult DeleteAnnouncement(int id)
+        {
+            var value = _announcementService.TGetById(id);  
+            _announcementService.TDelete(value);
+            return RedirectToAction("Index");
+        }
     }
 }
