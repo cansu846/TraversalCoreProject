@@ -66,13 +66,41 @@ namespace TraversalCoreProject.Areas.Admin.Controllers
             }
             return View();
         }
-        
-        [HttpGet("/Admin/Announcement/DeleteAnnouncement/{id}")]  
+
+        [HttpGet("/Admin/Announcement/DeleteAnnouncement/{id}")]
         public IActionResult DeleteAnnouncement(int id)
         {
             var value = _announcementService.TGetById(id);  
             _announcementService.TDelete(value);
             return RedirectToAction("Index");
+        }
+
+        [HttpGet("/Admin/Announcement/UpdateAnnouncement/{id}")]
+        public IActionResult UpdateAnnouncement(int id)
+        {
+            var value = _announcementService.TGetById(id);
+            //AnnouncementUpdateDto aUpdateDto = new AnnouncementUpdateDto();
+            //aUpdateDto.Title = value.Title;
+            //aUpdateDto.Content = value.Content;
+            var aUpdateDto = _mapper.Map<AnnouncementUpdateDto>(value);
+            return View(aUpdateDto);
+        }
+
+        [HttpPost]
+        public IActionResult UpdateAnnouncement(AnnouncementUpdateDto a)
+        {
+            if (ModelState.IsValid)
+            {
+                _announcementService.TUpdate(new Announcement
+                {   AnnouncementID = a.AnnouncementID,
+                    Title = a.Title,
+                    Content = a.Content,
+                    Date = Convert.ToDateTime(DateTime.Now.ToShortDateString())
+                });
+               
+                return RedirectToAction("Index");
+            }
+            return View();
         }
     }
 }

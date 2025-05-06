@@ -54,6 +54,8 @@ namespace TraversalCoreProject
             //AddTransient ile bu validator, her ihtiyaç duyulduğunda yeniden oluşturularak kullanılır.
             //FluentValidation kullanılarak şöyle bir validator yazılır:
             services.AddTransient<IValidator<AnnouncementAddDto>, AnnouncementAddValidator>();
+            services.AddTransient<IValidator<AnnouncementUpdateDto>, AnnouncementUpdateValidator>();
+
             //FluentValidation kütüphanesini ASP.NET Core MVC ile entegre eder. Böylece, gönderilen form verileri FluentValidation ile otomatik doğrulanır.
             services.AddControllersWithViews().AddFluentValidation();
 
