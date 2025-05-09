@@ -88,6 +88,7 @@ namespace TraversalCoreProject
             //.AddEntityFrameworkStores<Context>() → Kimlik doğrulama işlemlerinin veritabanında saklanacağını belirtir
             services.AddIdentity<AppUser,AppRole>().AddEntityFrameworkStores<Context>();
             services.AddControllersWithViews();
+            services.AddHttpClient();
 
             //Mvc servisini ekler ve bazı yetkilendirme (authorization) kurallarını uygular.
             services.AddMvc(config =>

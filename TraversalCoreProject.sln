@@ -18,6 +18,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTOLayer", "DTOLayer\DTOLayer.csproj", "{31E1B7AD-62DF-4F86-809E-37D6C64924AB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TraversalWebApi", "TraversalWebApi\TraversalWebApi.csproj", "{217857C1-1951-43DA-9B69-B69570F88A55}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,10 @@ Global
 		{31E1B7AD-62DF-4F86-809E-37D6C64924AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31E1B7AD-62DF-4F86-809E-37D6C64924AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31E1B7AD-62DF-4F86-809E-37D6C64924AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{217857C1-1951-43DA-9B69-B69570F88A55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{217857C1-1951-43DA-9B69-B69570F88A55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{217857C1-1951-43DA-9B69-B69570F88A55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{217857C1-1951-43DA-9B69-B69570F88A55}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
