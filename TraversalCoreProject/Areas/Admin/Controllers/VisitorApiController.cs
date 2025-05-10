@@ -14,6 +14,7 @@ namespace TraversalCoreProject.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Route("Admin/[controller]/[action]")]
+    [AllowAnonymous]
     public class VisitorApiController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
@@ -28,9 +29,15 @@ namespace TraversalCoreProject.Areas.Admin.Controllers
         {
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.GetAsync("https://localhost:44335/api/Visitor");
+            Console.WriteLine(responseMessage);
+            Console.WriteLine("cansu");
+
             if (responseMessage.IsSuccessStatusCode)
             {
+                // Gelen cevabın JSON içerik kısmı okunur.
+                //ReadAsStringAsync() metodu JSON'u string formatında alır.
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                //VisitorViewModel türünde bir listeye deserialize edilir.
                 var values = JsonConvert.DeserializeObject<List<VisitorViewModel>>(jsonData);
                 return View(values);
             }

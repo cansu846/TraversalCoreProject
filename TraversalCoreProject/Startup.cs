@@ -23,6 +23,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using TraversalCoreProject.CQRS.Handlers.DestinationHandlers;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Model;
 
 namespace TraversalCoreProject
@@ -80,6 +81,12 @@ namespace TraversalCoreProject
 
             services.AddScoped<IContactSideUserMessageService, ContactSideUserMessageManager>();
             services.AddScoped<IContactSideUserMessageDal, EfContactSideUserMessageDal>();
+
+            services.AddScoped<GetAllDestinationQueryHandler>();
+            services.AddScoped<GetDestinationByIdQueryHandler>();
+            services.AddScoped<CreateDestinationCommandHandler>();
+            services.AddScoped<RemoveDestinationCommandHandler>();
+            services.AddScoped<UpdateDestinationCommandHandler>();
 
             //Entity Framework Core kullanarak veritabanı bağlantısını yapılandırır.
             //Context->Uygulamanın veri tabanı ile i,letişimini sagalar.

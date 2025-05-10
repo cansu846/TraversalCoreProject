@@ -1,0 +1,50 @@
+﻿@model List<GetAllDestinationQueryResult>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    <div class="card mt-3">
+        <h5 class="card-header">Destinations</h5>
+        <div class="table-responsive text-nowrap">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>City</th>
+                        <th>DayNight</th>
+                       <th>Capacity</th>
+                        <th>Price</th>
+                     
+
+                    </tr>
+                </thead>
+                <tbody class="table-border-bottom-0">
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.DestinationID</td> 
+                            <td>@item.City </td>
+                            <td>@item.DayNight</td>
+                            <td>@item.Capacity</td>
+                            <td><span class="badge bg-label-primary me-1">@item.Price</span></td>
+                            <td><a href="/Admin/DestinationCQRS/DeleteDestination/@item.DestinationID" class="btn btn-danger small">Delete</a></td>
+                            <td><a href="/Admin/DestinationCQRS/GetDestinationById/@item.DestinationID" class="btn btn-success small">Update</a></td>
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+            <div class="flex justify-content-end">
+                <a href="/Admin/DestinationCQRS/AddDestination/" class="btn btn-primary lg m-3">Add</a>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

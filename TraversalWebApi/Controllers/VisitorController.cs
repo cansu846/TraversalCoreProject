@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using TraversalWebApi.DAL.Context;
@@ -7,6 +8,7 @@ using TraversalWebApi.Entities;
 namespace TraversalWebApi.Controllers
 {
     [Route("api/[controller]")]
+    [AllowAnonymous]
     [ApiController]
     public class VisitorController : ControllerBase
     {
