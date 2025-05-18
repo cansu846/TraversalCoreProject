@@ -5,11 +5,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using BusinessLayer.Abstract;
+using BusinessLayer.Abstract.AbstractUnitOfWork;
 using BusinessLayer.Concrete;
+using BusinessLayer.Concrete.ConcreteUnitOfWork;
 using BusinessLayer.ValidationRules;
 using DataAccessLayer.Abstract;
+using DataAccessLayer.Abstract.AbstractUnitOfWork;
 using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
+using DataAccessLayer.EntityFramework.EfUnitOfWork;
+using DataAccessLayer.UnitOfWork;
 using DTOLayer.DTOs.AnnouncementDto;
 using EntityLayer.Concrete;
 using FluentValidation;
@@ -83,6 +88,10 @@ namespace TraversalCoreProject
 
             services.AddScoped<IContactSideUserMessageService, ContactSideUserMessageManager>();
             services.AddScoped<IContactSideUserMessageDal, EfContactSideUserMessageDal>();
+
+            services.AddScoped<IAccountService, AccountManager>();
+            services.AddScoped<IAccountDal, EfAccountDal>();
+            services.AddScoped<IUnitOfWorkDal, UnitOfWorkDal>();
 
             services.AddScoped<GetAllDestinationQueryHandler>();
             services.AddScoped<GetDestinationByIdQueryHandler>();

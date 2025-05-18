@@ -1,0 +1,38 @@
+﻿@model AccountViewModel
+@{
+    ViewData["Title"] = "UpdateAccount";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="container mt-5">
+    <h5 class="mb-3">UpdateAccount</h5>
+
+    <form method="post" asp-action="UpdateAccount">
+        <input type="number" asp-for="SenderId" placeholder="Pleace enter sender id" class="form-control"/>
+        <br />
+        <input type="number" asp-for="RecieverId" placeholder="Pleace enter reciever id" class="form-control"/>
+        <br />
+
+        <input type="number" asp-for="Amount" placeholder="Pleace enter amount that transfer" class="form-control"/>
+        <br />
+
+        <button class="btn btn-primary">Send Money</button>
+    </form>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        @if (TempData["message"] != null)
+        {
+            <text>
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success!',
+                        text: '@TempData["message"]'
+                    });
+            </text>
+        }
+    </script>
+}

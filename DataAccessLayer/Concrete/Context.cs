@@ -15,6 +15,8 @@ namespace DataAccessLayer.Concrete
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("server=DESKTOP-3ADO5MC\\SQLEXPRESS; database=TraversalCoreDb; integrated security=true");
+            Console.WriteLine("✅ DbContext instance created: " + this.GetHashCode());
+
         }
 
         public DbSet<About> Abouts { get; set; }       
@@ -31,6 +33,7 @@ namespace DataAccessLayer.Concrete
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<ContactSideUserMessage> ContactSideUserMessages { get; set; }
         public DbSet<Announcement> Announcements { get; set; }
+        public DbSet<Account> Accounts { get; set; }
 
     }
 }
