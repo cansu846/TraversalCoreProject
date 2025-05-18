@@ -1,4 +1,4 @@
-﻿namespace TraversalCoreProject.CQRS.Commands
+﻿namespace TraversalCoreProject.CQRS.Commands.DestinationCommands
 {
     public class RemoveDestinationCommand
     {

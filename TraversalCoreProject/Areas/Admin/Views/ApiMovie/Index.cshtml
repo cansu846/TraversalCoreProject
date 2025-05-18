@@ -1,0 +1,12 @@
+﻿List<ApiMovieViewModel.result>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Index</h1>
+
+    @foreach (var item in Model)
+    {
+        <p>@item.Series_Title</p>
+}

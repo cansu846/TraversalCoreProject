@@ -14,6 +14,7 @@ using DTOLayer.DTOs.AnnouncementDto;
 using EntityLayer.Concrete;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -24,6 +25,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using TraversalCoreProject.CQRS.Handlers.DestinationHandlers;
+using TraversalCoreProject.CQRS.Handlers.GuideHandlers;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Model;
 
 namespace TraversalCoreProject
@@ -87,6 +89,12 @@ namespace TraversalCoreProject
             services.AddScoped<CreateDestinationCommandHandler>();
             services.AddScoped<RemoveDestinationCommandHandler>();
             services.AddScoped<UpdateDestinationCommandHandler>();
+
+            //uygulamaya MediatR kütüphanesini tanıtır ve ilgili handler'ları (işleyicileri)
+            //otomatik olarak bulup Dependency Injection (bağımlılık enjeksiyonu) sistemine dahil eder.
+            //typeof(Startup) ifadesi, C#’ta Startup sınıfının tür bilgisini (type) verir.
+            //Bu türün bulunduğu assembly(derlenmiş.dll dosyası) üzerinden MediatR handler’larını araması sağlanır.
+             services.AddMediatR(typeof(Startup));
 
             //Entity Framework Core kullanarak veritabanı bağlantısını yapılandırır.
             //Context->Uygulamanın veri tabanı ile i,letişimini sagalar.

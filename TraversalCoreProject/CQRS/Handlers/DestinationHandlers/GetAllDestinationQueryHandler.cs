@@ -1,4 +1,5 @@
 ﻿using DataAccessLayer.Concrete;
+using DocumentFormat.OpenXml.Drawing;
 using DocumentFormat.OpenXml.Office2010.ExcelAc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -27,6 +28,9 @@ namespace TraversalCoreProject.CQRS.Handlers.DestinationHandlers
                     Capacity = x.Capacity,  
                     DayNight = x.DayNight,  
                 }
+            //EF Core, varsayılan olarak veritabanından çektiği verileri Change Tracker adı verilen bir mekanizma ile izler.
+            //Bu izleme sayesinde veride bir değişiklik olursa otomatik olarak güncellenebilir.
+            //Ancak sadece veri okuma(read - only) işlemi yapıyorsan, bu takip gereksiz yere bellek kullanımı ve işlem yükü yaratır.
             //.AsNoTracking(): EF Core'un performans için verileri izlememesini sağlar (değiştirilmeyecekse önerilir).
             ).AsNoTracking().ToList();
 

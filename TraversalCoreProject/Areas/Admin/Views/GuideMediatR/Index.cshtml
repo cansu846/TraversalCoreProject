@@ -1,0 +1,36 @@
+﻿@using TraversalCoreProject.CQRS.Results.GuideResults
+@model List<GetAllGuidesQueryResult>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var count = 0;
+}
+
+ <div class="container mt-5">
+    <h4 class="mb-5">Guide List Using Cqrs and MediatR</h4>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Guide Name</th>
+                <th>Description</th>
+                <th>Delete</th>
+                <th>Update</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                count++;
+                <tr>
+                    <td>@count</td>
+                    <td>@item.Name</td>
+                    <td>@item.Description</td>
+                    <td><a href="/Admin/GuideMediatR/DeleteGuide/@item.GuideID" class="btn btn-danger">Delete</a></td>
+                    <td><a asp-area="Admin" asp-controller="GuideMediatR" asp-action="UpdateGuide" asp-route-id="@item.GuideID" class="btn btn-success">Update</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a href="/Admin/GuideMediatR/CreateGuide" class="btn btn-success">Add Guide</a>
+ </div>

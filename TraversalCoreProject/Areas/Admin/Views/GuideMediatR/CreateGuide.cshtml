@@ -1,0 +1,18 @@
+﻿@using TraversalCoreProject.CQRS.Commands.GuideCommands
+@model CreateGuideCommand
+@{
+    ViewData["Title"] = "CreateGuide";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="container mt-3">
+    <h5 class="my-4">Create Guide Using CQRS and MediatR</h5>
+    <form class="form form-control" method="post">
+        <input type="text" class="form-control m-2" asp-for="Name" placeholder="Please enter name" />
+        <textarea asp-for="Description" class="form-control m-2" rows="6"></textarea>
+        <button type="submit" class="btn btn-primary m-2">Create Guide</button>
+    </form>
+</div>
+
+

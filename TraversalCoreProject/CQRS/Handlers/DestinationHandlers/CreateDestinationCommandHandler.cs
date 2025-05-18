@@ -1,6 +1,6 @@
 ﻿using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
-using TraversalCoreProject.CQRS.Commands;
+using TraversalCoreProject.CQRS.Commands.DestinationCommands;
 
 namespace TraversalCoreProject.CQRS.Handlers.DestinationHandlers
 {
@@ -12,7 +12,6 @@ namespace TraversalCoreProject.CQRS.Handlers.DestinationHandlers
         {
             _context = context;
         }
-
         public void Handle(CreateDestinationCommand command)
         {
             _context.Destinations.Add(new Destination

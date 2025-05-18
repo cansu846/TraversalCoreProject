@@ -1,0 +1,19 @@
+﻿@using TraversalCoreProject.CQRS.Results.GuideResults
+@model GetGuideByIdQueryResult
+
+@{
+    ViewData["Title"] = "UpdateGuide";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container mt-3">
+    <h5 class="my-4">Update Guide Using CQRS and MediatR</h5>
+    <form method="post" asp-action="UpdateGuide" asp-controller="GuideMediatR" asp-area="Admin">
+        <input type="hidden" class="form-control" asp-for="GuideID" />
+        <input type="text" class="form-control m-2"  asp-for="Name" placeholder="Please enter name" />
+        <textarea asp-for="Description" class="form-control m-2" rows="6"></textarea>
+        <button class="btn btn-primary m-2">Update Guide</button>
+    </form>
+</div>
+
+

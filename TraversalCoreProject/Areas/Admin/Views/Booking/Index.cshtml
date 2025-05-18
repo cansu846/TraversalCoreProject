@@ -1,0 +1,33 @@
+﻿@model BookingViewModel.Data
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var count = 0;
+}
+
+<h3 class="m-5">Search Booking</h3>
+<div class="container">
+    <table class="table table-striped p-3">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Hotel Name</th>
+                <th>Review Score</th>
+                <th>Excluded Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.hotels)
+            { 
+                count++;
+                <tr>
+                    <td>@count</td>
+                    <td>@item.property.name</td>
+                    <td>@item.property.reviewScore</td>
+                    <td>@item.property.priceBreakdown.excludedPrice.value @item.property.priceBreakdown.excludedPrice.currency</td>
+                </tr>
+            }
+           
+        </tbody>
+    </table>
+</div>
