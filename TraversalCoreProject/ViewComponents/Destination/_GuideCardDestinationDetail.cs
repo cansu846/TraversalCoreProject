@@ -14,11 +14,10 @@ namespace TraversalCoreProject.ViewComponents.Destination
             rnd = new Random();
         }
 
-        public IViewComponentResult Invoke()
+        public IViewComponentResult Invoke(int guideId)
         {
-            var randomNumber = rnd.Next(1, _guideService.TGetList().Count);
-            var value = _guideService.TGetById(randomNumber);
-            ViewBag.number = randomNumber;
+            //var randomNumber = rnd.Next(1, _guideService.TGetList().Count);
+            var value = _guideService.TGetById(guideId);
             return View(value);
         }
     }

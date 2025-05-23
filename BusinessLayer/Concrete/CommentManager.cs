@@ -21,6 +21,11 @@ namespace BusinessLayer.Concrete
             _commentDal.Insert(t);
         }
 
+        public List<Comment> TCommentListWithDestinationAndAppUser(int destinationId)
+        {
+            return _commentDal.CommentListWithDestinationAndAppUser(destinationId);
+        }
+
         public void TDelete(Comment t)
         {
            _commentDal.Delete(t);

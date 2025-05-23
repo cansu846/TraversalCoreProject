@@ -21,11 +21,11 @@
                 </div>
                 <div class="blog-post-info">
                     <div class="author align-items-center mb-1">
-                        <a href="#">Johnson smith</a> in <a href="#url">Traversal</a>
+                        <a href="#">@Model.Guide.Name</a> in <a href="#url">Traversal</a>
                     </div>
                     <ul class="blog-meta">
                         <li class="meta-item blog-lesson">
-                            <span class="meta-value"> June 13, 2020 </span>
+                            <span class="meta-value">@Model.Date.ToString()</span>
                         </li>
                         <li class="meta-item blog-students">
                             <span class="meta-value"> 6min read</span>
@@ -104,14 +104,13 @@
                     </div>
 
                     <!--//author-card-->
-                @await Component.InvokeAsync("_GuideCardDestinationDetail")
+                @await Component.InvokeAsync("_GuideCardDestinationDetail", new { guideId = Model.GuideID})
                     <!--//author-card-->
-                    @await Component.InvokeAsync("_Comment", new { id = ViewBag.i })
+                @await Component.InvokeAsync("_Comment", new { destinationId = ViewBag.i})
 
-                    @* @await Component.InvokeAsync("_AddComment") *@
-
-                    @await Html.PartialAsync("~/Views/Comment/_AddCommentPartial.cshtml");
-                    
+@*                     @await Component.InvokeAsync("_AddComment")
+ *@
+                @await Html.PartialAsync("~/Views/Comment/_AddCommentPartial.cshtml")
                 </div>
             </div>
             <!--//blog-post-->
