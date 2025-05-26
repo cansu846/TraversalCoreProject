@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+@section Scripts{
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(()=>{
+            var connection = new signalR.HubConnectionBuilder().withUrl("https://localhost:44318/VisitorHub").build();
+            $("#connectionStatus").text(connection.connectionState);
+
+            connection.start().then(()=>{
+                $("#connectionStatus").text(connection.connectionState);
+                console.log(connection.connectionState)
+            }).catch((err)=>{console.log(err)})
+        })
+    </script>
+}
+
+<div class="container">
+    <br />
+    <div class="alert alert-warning">
+        Connection status: <b id="connectionStatus"> test </b>
+    </div>
+</div>

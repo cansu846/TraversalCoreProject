@@ -8,16 +8,15 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using SignalRWebApi.Controllers;
-using SignalRWebApi.DAL;
-using SignalRWebApi.Hubs;
-using SignalRWebApi.Models;
+using SignalRApiForMsSql.DAL;
+using SignalRApiForMsSql.Hubs;
+using SignalRApiForMsSql.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SignalRWebApi
+namespace SignalRApiForMsSql
 {
     public class Startup
     {
@@ -31,11 +30,10 @@ namespace SignalRWebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddEntityFrameworkNpgsql().AddDbContext<Context>(opt => opt.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<Context>(options => options.UseSqlServer(Configuration["DefaultConnection"]));
             services.AddScoped<VisitorService>();
             services.AddSignalR();
             services.AddControllers();
-
             services.AddCors(options => options.AddPolicy("CorsPolicy",
                 builder =>
                 {
@@ -45,9 +43,10 @@ namespace SignalRWebApi
                     .SetIsOriginAllowed((host) => true)
                     .AllowCredentials();
                 }));
+
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "SignalRWebApi", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "SignalRApiForMsSql", Version = "v1" });
             });
         }
 
@@ -58,8 +57,9 @@ namespace SignalRWebApi
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SignalRWebApi v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SignalRApiForMsSql v1"));
             }
+
             app.UseHttpsRedirection();
 
             app.UseRouting();

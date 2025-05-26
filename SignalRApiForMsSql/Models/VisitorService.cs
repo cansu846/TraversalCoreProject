@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
-using SignalRWebApi.DAL;
-using SignalRWebApi.Hubs;
+using SignalRApiForMsSql.Hubs;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using SignalRApiForMsSql.DAL;
 
-namespace SignalRWebApi.Models
+namespace SignalRApiForMsSql.Models
 {
     public class VisitorService
     {
@@ -37,9 +37,7 @@ namespace SignalRWebApi.Models
             List<VisitorChart> visitorCharts = new List<VisitorChart>();
             using (var command = _context.Database.GetDbConnection().CreateCommand())
             {
-                command.CommandText = "Select tarih,[1], [2],[3],[4],[5] from (select [city], CityVisitCount, " +
-                    "Cast([VisitDate] as Date) as tarih from Visitors) as visitTable Pivot (Sum(CityVisitCount)" +
-                    " for City in ([1],[2],[3],[4],[5])) as pivottable order by tarih asc";
+                command.CommandText = "Query sorgu";
                 command.CommandType = System.Data.CommandType.Text;
                 _context.Database.OpenConnection();
                 using (var reader = command.ExecuteReader())
