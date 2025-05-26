@@ -8,6 +8,7 @@ using BusinessLayer.Abstract;
 using BusinessLayer.Abstract.AbstractUnitOfWork;
 using BusinessLayer.Concrete;
 using BusinessLayer.Concrete.ConcreteUnitOfWork;
+using BusinessLayer.FluentValidation.ContactUs;
 using BusinessLayer.ValidationRules;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.Abstract.AbstractUnitOfWork;
@@ -16,6 +17,7 @@ using DataAccessLayer.EntityFramework;
 using DataAccessLayer.EntityFramework.EfUnitOfWork;
 using DataAccessLayer.UnitOfWork;
 using DTOLayer.DTOs.AnnouncementDto;
+using DTOLayer.DTOs.ContactDto;
 using EntityLayer.Concrete;
 using FluentValidation;
 using FluentValidation.AspNetCore;
@@ -63,6 +65,8 @@ namespace TraversalCoreProject
             //FluentValidation kullanılarak şöyle bir validator yazılır:
             services.AddTransient<IValidator<AnnouncementAddDto>, AnnouncementAddValidator>();
             services.AddTransient<IValidator<AnnouncementUpdateDto>, AnnouncementUpdateValidator>();
+
+            services.AddTransient<IValidator<SendMessageDto>, SendContactUsValidatior>();
 
             //FluentValidation kütüphanesini ASP.NET Core MVC ile entegre eder. Böylece, gönderilen form verileri FluentValidation ile otomatik doğrulanır.
             services.AddControllersWithViews().AddFluentValidation();

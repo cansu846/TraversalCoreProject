@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <Folder Include="DTOs\CityDto\" />
-    <Folder Include="DTOs\ContactDto\" />
     <Folder Include="DTOs\DestinationDto\" />
   </ItemGroup>
 
