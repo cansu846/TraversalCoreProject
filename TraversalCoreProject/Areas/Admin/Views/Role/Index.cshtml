@@ -1,0 +1,31 @@
+﻿@model List<AppRole>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+<div class="container my-5">
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Role Name</th>
+            <th>Delete</th>
+            <th>Update</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            count++;
+            <tr>
+                <td>@count</td>
+                <td>@item.Name</td>
+                    <td><a href="/Admin/Role/DeleteRole/@item.Id" class="btn btn-danger">Delete</a></td>
+                    <td><a asp-controller="Role" asp-action="UpdateRole" asp-route-id="@item.Id" class="btn btn-success">Update</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div> <a href="/Admin/Role/CreateRole" class="btn btn-primary">Add Role</a> </div>
+</div>
