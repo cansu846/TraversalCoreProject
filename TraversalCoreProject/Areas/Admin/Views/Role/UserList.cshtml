@@ -1,0 +1,30 @@
+﻿@model List<AppUser>
+@{
+    ViewData["Title"] = "UserList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var count = 0;
+}
+
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>User Name</th>
+                <th>Assign Role</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                count++;
+                <tr>
+                    <td>@count</td>
+                    <td>@item.Name</td>
+                    <td><a asp-action="AssignRole" asp-controller="Role" asp-route-id="@item.Id" class="btn btn-success">Assign Role</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

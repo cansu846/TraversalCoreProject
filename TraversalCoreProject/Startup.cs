@@ -132,7 +132,7 @@ namespace TraversalCoreProject
 
             services.ConfigureApplicationCookie(options =>
             {
-                options.LoginPath = "/Login/SigIn";
+                options.LoginPath = "/Login/SignIn/";
             });
         }
 
