@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "MyApprovalReservation";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
+    var count = 0;
 }
 
 
@@ -28,12 +29,13 @@
                             <tbody>
                                 @foreach (var item in Model)
                                 {
+                                    count++;
                                     <tr>
-                                        <td>@item.ReservationId</td>
+                                        <td>@count</td>
                                         <td>@item.Destination.City</td>
                                         <td>@item.PersonCount</td>
                                         <td class="p-2">@item.ReservationDate</td>
-                                        <td>@item.Status</td>
+                                        <td><span class="btn btn-info">@item.Status</span></td>
                                     </tr>
 
                                 }

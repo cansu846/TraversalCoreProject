@@ -19,7 +19,8 @@ namespace TraversalCoreProject.Areas.Member.Controllers
         public async Task<IActionResult> Index()
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
-            ViewBag.userNameSurname = user.UserName + " " + user.Surname;
+            ViewBag.Name = user.Name;
+            ViewBag.Surname = user.Surname;
             ViewBag.userImage = user.ImageUrl;
             return View();
         }
