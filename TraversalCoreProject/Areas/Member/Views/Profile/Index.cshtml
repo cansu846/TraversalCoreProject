@@ -1,39 +1,63 @@
 ﻿@model UserEditViewModel
 @{
-    Layout = "~/Views/Shared/_UserLayout.cshtml";
+    ViewData["Title"] = "UpdateProfile";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
 }
-<h1>Index</h1>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title text-center">Update Profile</h4>
+                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                        <li><a data-action="close"><i class="ft-x"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-content collapse show">
+                <div class="card-body">
+                    <p class="card-text text-center">Here you can edit your profile information</p>
+                    @* enctype -->dosya kaydetme işlemi için gerekli *@
+                    <form method="post" enctype="multipart/form-data">
 
-@* enctype -->dosya kaydetme işlemi için gerekli *@
- <form method="post" enctype="multipart/form-data">
-
-    @Html.Label("Name")
-    <input type="text" asp-for="Name" class="form-control"/>
-    <br />
-     @Html.Label("Surname")
-    <input type="text" asp-for="Surname" class="form-control"/>
-    <br />
-     @Html.Label("UserName")
-    <input type="text" asp-for="UserName" class="form-control"/>
-    <br />
-    @Html.Label("Email")
-    <input type="text" asp-for="EMail" class="form-control" />
-    <br />
-     @Html.Label("Phone Number")
-    <input type="text" asp-for="PhoneNumber" class="form-control"/>
-    <br />
-    @*  @Html.Label("Image Url")
+                        @Html.Label("Name")
+                        <input type="text" asp-for="Name" class="form-control" />
+                        <br />
+                        @Html.Label("Surname")
+                        <input type="text" asp-for="Surname" class="form-control" />
+                        <br />
+                        @Html.Label("UserName")
+                        <input type="text" asp-for="UserName" class="form-control" />
+                        <br />
+                        @Html.Label("Email")
+                        <input type="text" asp-for="EMail" class="form-control" />
+                        <br />
+                        @Html.Label("Phone Number")
+                        <input type="text" asp-for="PhoneNumber" class="form-control" />
+                        <br />
+                        @*  @Html.Label("Image Url")
     <input type="text" asp-for="ImageUrl" class="form-control"/>
     <br /> *@
-     @Html.Label("Password")
-    <input type="password" asp-for="Password" class="form-control"/>
-    <br />
-     @Html.Label("Confirmation Password")
-    <input type="text" asp-for="ConfirmPassword" class="form-control"/>
-    <br />
-   <div class="form-group">
-       <input type="file" asp-for="Image"/>
-   </div>
-   <br />
-   <button class="btn btn-success">Update Profile</button>
-</form>
+                        @Html.Label("Password")
+                        <input type="password" asp-for="Password" class="form-control" />
+                        <br />
+                        @Html.Label("Confirmation Password")
+                        <input type="text" asp-for="ConfirmPassword" class="form-control" />
+                        <br />
+                        <div class="form-group">
+                            <input type="file" asp-for="Image" />
+                        </div>
+                        <br />
+                        <button class="btn btn-success">Update Profile</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

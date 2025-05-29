@@ -2,19 +2,29 @@
 @model List<Destination>
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_UserLayout.cshtml";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+    var count = 0;
 }
-
-<div class="container-fluid py-4">
-    <div class="row">
-        <div class="col-12">
-            <div class="card pb-10">
-                <div class="card-header text-center pb-5">
-                    <h1 class="font-weight-bolder">Destinations</h1>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title text-center">Destinations</h4>
+                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                        <li><a data-action="close"><i class="ft-x"></i></a></li>
+                    </ul>
                 </div>
-                <div class="card-body px-0 pt-0 pb-2">
-                    <div class="table-responsive p-2">
-                        <table class="table table-striped align-items-center mb-0">
+            </div>
+            <div class="card-content collapse show">
+                <div class="card-body">
+                    <p class="card-text text-center">Here you can view all destinations If you want more information you can visit out detail page.</p>
+                    <div class="table-responsive mt-5">
+                        <table class="table table-striped">
                             <thead>
                                 <tr>
                                     <th class="">#</th>
@@ -22,22 +32,23 @@
                                     <th class="">Day Nigth</th>
                                     <th class=" p-2">Capacity</th>
                                     <th class="">Price</th>
-                                    <th class="">Description</th>
+                                    <th class=""></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach(var item in Model){
+                                @foreach (var item in Model)
+                                {
+                                    count++;
                                     <tr>
-                                        <td>@item.DestinationID</td>
-                                        <td >@item.City</td>
+                                        <td>@count</td>
+                                        <td>@item.City</td>
                                         <td>@item.DayNight</td>
                                         <td class="p-2">@item.Capacity</td>
-                                        <td>@item.Price TL</td>
+                                        <td>@item.Price ₺</td>
                                         <td><a asp-controller="Destination" asp-action="DestinationDetail" asp-route-id="@item.DestinationID" class="btn btn-success">Detail</a></td>
                                     </tr>
-                                   
+
                                 }
-                                
                             </tbody>
                         </table>
                     </div>

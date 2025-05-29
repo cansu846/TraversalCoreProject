@@ -1,5 +1,92 @@
 ﻿@model List<Destination>
-<div class="col-12 mt-4">
+@{
+    var tempClass = "";
+}
+<div class="card">
+    <div class="card-content">
+        <div class="card-body">
+            <h4 class="card-title text-center">Let see our last destinations !</h4>
+        </div>
+        <div id="carousel-area" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-area" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-area" data-slide-to="1"></li>
+                <li data-target="#carousel-area" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner" role="listbox">
+                @for (var i = 0; i < Model.Count; i++)
+                {
+                    @if (i == 0)
+                    {
+                        tempClass = "active";
+                    }
+                    else
+                    {
+                        tempClass = "";
+                    }
+
+                    <div class="carousel-item @tempClass">
+                        <div class="card card-blog card-plain">
+                            <div class="position-relative">
+                                <a class="d-block shadow-xl border-radius-xl">
+                                    <img src="@Model[i].Image" style="height: 300px" alt="img-blur-shadow" class=" d-block w-100">
+                                </a>
+                            </div>
+                            <div class="card-body px-1 pb-0 text-black text-center">
+                                <p class="card-text mb-2">@Model[i].DayNight - @Model[i].Price ₺</p>
+                                <a href="javascript:;">
+                                    <h5>
+                                        @Model[i].City
+                                    </h5>
+                                </a>
+                                <p class="mb-4 text-sm">
+                                    @Model[i].Description2.Substring(0, 200)...
+                                </p>
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <a asp-controller="Destination" asp-action="DestinationDetail" asp-route-id="@Model[i].DestinationID" class="btn btn-outline-primary btn-sm mb-0">View Destination</a>
+                                    <div class="avatar-group mt-2">
+                                        <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Elena Morison">
+                                            <img alt="Image placeholder" src="~/Traversal-Starter/assets/images/team1.jpg">
+                                        </a>
+                                        <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Milly">
+                                            <img alt="Image placeholder" src="~/Traversal-Starter/assets/images/team2.jpg">
+                                        </a>
+                                        <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Nick Daniel">
+                                            <img alt="Image placeholder" src="~/Traversal-Starter/assets/images/team3.jpg">
+                                        </a>
+                                        <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Peterson">
+                                            <img alt="Image placeholder" src="~/Traversal-Starter/assets/images/team4.jpg">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="card-footer border-top-blue-grey border-top-lighten-5 text-muted">
+                                    <span class="float-left">@Model[i].Date.ToShortDateString()</span>
+                                    <span class="tags float-right">
+                                        <span class="badge badge-pill badge-primary">Branding</span>
+                                        <span class="badge badge-pill badge-danger">Design</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <a class="carousel-control-prev text-white" href="#carousel-area" role="button" data-slide="prev">
+                <span class="la la-angle-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carousel-area" role="button" data-slide="next">
+                <span class="la la-angle-right icon-next" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+
+
+@* <div class="col-12 mt-4">
     <div class="card mb-4">
         <div class="card-header pb-0 p-3">
             <h6 class="mb-1">Projects</h6>
@@ -48,8 +135,8 @@
                     </div>
 
                 }
-            
+
             </div>
         </div>
     </div>
-</div>
+</div> *@
