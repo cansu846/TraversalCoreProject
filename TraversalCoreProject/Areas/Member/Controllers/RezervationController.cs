@@ -70,5 +70,6 @@ namespace TraversalCoreProject.Areas.Member.Controllers
             _reservationService.TAdd(reservation);
             return RedirectToAction("CurrentReservation");
         }
+
     }
 }

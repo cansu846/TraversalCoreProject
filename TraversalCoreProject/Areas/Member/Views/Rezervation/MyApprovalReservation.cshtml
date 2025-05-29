@@ -1,32 +1,40 @@
 ﻿@model List<Reservation>
 @{
     ViewData["Title"] = "MyApprovalReservation";
-    Layout = "~/Views/Shared/_UserLayout.cshtml";
-    var count = 0;
+	Layout = "~/Views/Shared/_MemberLayout.cshtml";
+	var count = 0;
 }
 
-
-
-<div class="container-fluid py-4">
-    <div class="row">
-        <div class="col-12">
-            <div class="card mb-4">
-                <div class="card-header text-center pb-3">
-                    <h6 class="font-weight-bolder">My Approval Reservation</h6>
-                </div>
-                <div class="card-body px-0 pt-0 pb-2">
-                    <div class="table-responsive p-2">
-                        <table class="table align-items-center mb-0">
-                            <thead>
-                                <tr>
-                                    <th class="">#</th>
-                                    <th class="">Destination</th>
-                                    <th class="">Person Count</th>
-                                    <th class="">Reservation Apply Date</th>
-                                    <th class="">Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+<div class="row">
+	<div class="col-12">
+		<div class="card">
+			<div class="card-header">
+				<h4 class="card-title">My Approvel Reservations</h4>
+				<a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+				<div class="heading-elements">
+					<ul class="list-inline mb-0">
+						<li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+						<li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+						<li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+						<li><a data-action="close"><i class="ft-x"></i></a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="card-content collapse show">
+				<div class="card-body">
+					<p class="card-text">Here you can find all your reservations awaiting approval from the Traversal website.</p>
+					<div class="table-responsive mt-2">
+						<table class="table">
+							<thead>
+								<tr>
+									<th class="">#</th>
+									<th class="">Destination</th>
+									<th class="">Person Count</th>
+									<th class="">Reservation Apply Date</th>
+									<th class="">Status</th>
+								</tr>
+							</thead>
+							<tbody>
                                 @foreach (var item in Model)
                                 {
                                     count++;
@@ -39,13 +47,18 @@
                                     </tr>
 
                                 }
-
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
+
+
+
+
+
+
 
