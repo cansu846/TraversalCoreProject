@@ -2,7 +2,7 @@
 
 namespace TraversalCoreProject.Areas.Member.ViewComponents.MemberDashboard
 {
-    public class _MemberLayoutHead:ViewComponent
+    public class MemberLayoutHead:ViewComponent
     {
         public IViewComponentResult Invoke()
         {

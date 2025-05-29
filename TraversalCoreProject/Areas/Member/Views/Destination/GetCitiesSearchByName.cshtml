@@ -1,10 +1,11 @@
 ﻿@using EntityLayer.Concrete
 @model List<Destination>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "GetCitiesSearchByName";
     Layout = "~/Views/Shared/_MemberLayout.cshtml";
     var count = 0;
 }
+
 <div class="row">
     <div class="col-12">
         <div class="card">
@@ -28,7 +29,7 @@
                             <input type="text" class="form-control" style="display:inline-block; width: 20%;"
                                    name="searchString" value="@ViewData["CurrentFilter"]" placeholder="Please enter city name for searching:">
                             <input type="submit" value="Search City" class="btn btn-outline-warning" style="display:inline-block; width: 150px;" />
-                        </div>
+                    </div>
                     </form>
                     <div class="table-responsive mt-5">
                         <table class="table table-striped">

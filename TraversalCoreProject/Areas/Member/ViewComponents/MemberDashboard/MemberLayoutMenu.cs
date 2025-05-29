@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 namespace TraversalCoreProject.Areas.Member.ViewComponents.MemberDashboard
 {
-    public class _MemberLayoutMenu : ViewComponent
+    public class MemberLayoutMenu : ViewComponent
     {
         public IViewComponentResult Invoke()
         {

@@ -1,15 +1,17 @@
-﻿@{
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+
+@{
     ViewData["Title"] = "MemberDashboard";
 }
 <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
-    @await Component.InvokeAsync("_MemberLayoutHead")
+    @await Component.InvokeAsync("MemberLayoutHead")
 <body class="vertical-layout vertical-menu 2-columns   menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-chartbg" data-col="2-columns">
 
     @await Component.InvokeAsync("_MemberLayoutNavbar")
 
     <!-- ////////////////////////////////////////////////////////////////////////////-->
-    @await Component.InvokeAsync("_MemberLayoutMenu")
+    @await Component.InvokeAsync("MemberLayoutMenu")
 
     <div class="app-content content">
         <div class="content-wrapper">
