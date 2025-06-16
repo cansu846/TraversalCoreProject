@@ -57,36 +57,36 @@ Author URL: http://w3layouts.com
 						<h4>Join Us</h4>
 						<p>Create Your Account, It's Free.</p>
 					</div>
-					<form action="/Login/SignUp" method="post" class="signin-form">
+					<form asp-action="SignUp" asp-controller="Login" method="post" class="signin-form">
 						<div class="form-input">
 							<label>Name</label>
-							<input type="text" asp-for="Name" required />
-							<span asp-for-validaiton="Name"></span>
+							<input type="text" asp-for="Name" />
+							<span asp-validation-for="Name" class="text-danger"></span>
 						</div>
 						<div class="form-input">
 							<label>Surname</label>
 							<input type="text" asp-for="Surname" />
-							<span asp-for-validaiton="Surname"></span>
+							<span asp-validation-for="Surname" class="text-danger"></span>
 						</div>
 						<div class="form-input">
 							<label>UserName</label>
 							<input type="text" asp-for="UserName" />
-							<span asp-for-validaiton="UserName"></span>
+							<span asp-validation-for="UserName" class="text-danger"></span>
 						</div>
 						<div class="form-input">
 							<label>Email</label>
 							<input type="email" asp-for="EMail" />
-							<span asp-for-validaiton="EMail"></span>
+							<span asp-validation-for="EMail" class="text-danger"></span>
 						</div>
 						<div class="form-input">
 							<label>Password</label>
 							<input type="password" asp-for="Password" />
-							<span asp-for-validaiton="Password"></span>
+							<span asp-validation-for="Password" class="text-danger"></span>
 						</div>
 						<div class="form-input">
 							<label>Confirm Password</label>
 							<input type="password" asp-for="ConfirmPassword" />
-							<span asp-for-validaiton="ConfirmPassword"></span>
+							<span asp-validation-for="ConfirmPassword" class="text-danger"></span>
 						</div>
 						<div class="text-danger" asp-validation-summary="ModelOnly">
 
@@ -115,3 +115,7 @@ Author URL: http://w3layouts.com
 </body>
 
 </html>
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation-unobtrusive@3.2.12/jquery.validate.unobtrusive.min.js"></script>

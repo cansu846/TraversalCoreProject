@@ -5,6 +5,7 @@ namespace TraversalCoreProject.Models
     public class UserRegisterViewModel
     {
         [Required(ErrorMessage ="Please enter your name...")]
+        [MinLength(4,ErrorMessage = "Please enter least 3...")]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Please enter your surname...")]

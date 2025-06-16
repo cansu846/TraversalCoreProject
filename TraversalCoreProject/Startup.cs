@@ -26,6 +26,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.Configuration;
@@ -70,7 +71,12 @@ namespace TraversalCoreProject
             services.AddTransient<IValidator<SendMessageDto>, SendContactUsValidatior>();
 
             //FluentValidation kütüphanesini ASP.NET Core MVC ile entegre eder. Böylece, gönderilen form verileri FluentValidation ile otomatik doğrulanır.
-            services.AddControllersWithViews().AddFluentValidation();
+            services.AddControllersWithViews();
+            // FluentValidation otomatik bağlama
+            services.AddFluentValidationAutoValidation(); // Bu satır FluentValidation 11 içindir
+            //✳️ Bu yeni yapı, FluentValidation 11 ile uyumludur ve hiçbir metot çizili görünmez.
+            services.AddValidatorsFromAssemblyContaining<AppUserRegisterValidator>();
+
 
             services.AddScoped<IAppUserService,AppUserManager>();
             services.AddScoped<IAppUserDal, EfAppUserDal>();
@@ -115,7 +121,24 @@ namespace TraversalCoreProject
             services.AddDbContext<Context>();
             //Kullanıcı kimlik doğrulama (authentication) sistemini ekler.
             //.AddEntityFrameworkStores<Context>() → Kimlik doğrulama işlemlerinin veritabanında saklanacağını belirtir
-            services.AddIdentity<AppUser,AppRole>().AddEntityFrameworkStores<Context>();
+            services.AddIdentity<AppUser, AppRole>()
+              .AddEntityFrameworkStores<Context>()
+              //Password reset işlemi için gerekiyor
+              //	Şifre sıfırlama, e-posta onayı gibi işlemler için token üretir
+              .AddTokenProvider<DataProtectorTokenProvider<AppUser>>(TokenOptions.DefaultProvider);
+
+            services.Configure<IdentityOptions>(options =>
+            {
+                // Şifre kuralları
+                options.Password.RequireDigit = true;              // En az 1 rakam
+                options.Password.RequiredLength = 6;               // En az 6 karakter
+                options.Password.RequireNonAlphanumeric = false;   // !@# gibi özel karakter zorunlu mu
+                options.Password.RequireUppercase = true;          // En az 1 büyük harf
+                options.Password.RequireLowercase = true;          // En az 1 küçük harf
+            });
+
+
+
             services.AddControllersWithViews();
             services.AddHttpClient();
 
@@ -181,7 +204,7 @@ namespace TraversalCoreProject
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Default}/{action=Index}/{id?}");
             });
             app.UseEndpoints(endpoints =>
             {
