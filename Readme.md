@@ -117,8 +117,11 @@ Giriş yapmamış ziyaretçiler için açık olan genel site alanıdır:
 4. Uygulamayı çalıştırın:
  ```bash
 	dotnet run
+```
+---
 
-📸 Görseller
+## 📸 Görseller
+
 ![Screenshot 2025-06-17 111426](https://github.com/user-attachments/assets/778209cd-f54e-4ca6-be70-bbd593e6c011)
 ![Screenshot 2025-06-17 111417](https://github.com/user-attachments/assets/09ba2c96-8865-4712-ad0b-cef4006c7e9a)
 ![Screenshot 2025-06-17 111406](https://github.com/user-attachments/assets/1c7e7c0d-0832-4df8-8856-4d14b6041490)
