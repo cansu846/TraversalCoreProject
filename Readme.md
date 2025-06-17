@@ -1,4 +1,4 @@
-﻿# 🌍 Traversal Core Project
+![Screenshot 2025-06-17 131445](https://github.com/user-attachments/assets/fcb7bed6-ebac-42a0-ad88-958fff52da18)﻿# 🌍 Traversal Core Project
 
 **Traversal Core**, modern web teknolojileri kullanılarak ASP.NET Core 5 ile geliştirilen, kullanıcıların seyahat destinasyonlarını keşfedip yorum bırakabileceği, yönetici ve üye alanları bulunan, çok katmanlı ve gelişmiş bir turizm uygulamasıdır.
 
@@ -147,6 +147,7 @@ Giriş yapmamış ziyaretçiler için açık olan genel site alanıdır:
 ![Screenshot 2025-06-17 121250](https://github.com/user-attachments/assets/08148a9e-4c12-4668-8470-f01909bb9a2a)
 ![Screenshot 2025-06-17 121335](https://github.com/user-attachments/assets/7774fa41-52a1-4231-a6b5-f9cc7cec9725)
 ![Screenshot 2025-06-17 121355](https://github.com/user-attachments/assets/3cf3c43d-0c12-4f06-9ad1-4b1d938fc891)
+![Screenshot 2025-06-17 131445](https://github.com/user-attachments/assets/74fe8cd1-5b40-4eed-924d-1b45b75b032f)
 ![Screenshot 2025-06-17 121404](https://github.com/user-attachments/assets/22346e63-9a46-425a-ba34-4ce931130f9e)
 ![Screenshot 2025-06-17 121412](https://github.com/user-attachments/assets/ee7b8632-c2c1-4e9c-8025-da43869725b0)
 
