@@ -25,6 +25,13 @@ namespace TraversalCoreProject.Areas.Admin.Controllers
             return View(values);
         }
 
+        [HttpGet]
+        public IActionResult MessageDetail(int id)
+        {
+            var values = _contactSideUserMessageService.TGetById(id);
+            return View(values);  
+        }
+
         //[HttpGet]
         //public IActionResult AddGuide()
         //{

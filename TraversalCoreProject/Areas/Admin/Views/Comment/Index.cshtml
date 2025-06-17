@@ -2,15 +2,15 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var count = 0;
 }
 
 
-<div class="container-xxl flex-grow-1 container-p-y">
-
-    <div class="card mt-3">
-        <h5 class="card-header">Destinations</h5>
+<div class="col-11 mx-auto">
+    <div class="card mt-3 border-0">
+        <h3 class="card-header text-black mb-3">Comments</h3>
         <div class="table-responsive text-nowrap">
-            <table class="table">
+            <table class="table table-hover">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -19,15 +19,15 @@
                         <th>Comment</th>
                         <th>Date</th>
                         <th></th>
-
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
                     @foreach (var item in Model)
                     {
+                        count++;
                         <tr>
-                            <td>@item.CommentId</td>
-                            <td>@item.CommentUser</td>
+                            <td>@count</td>
+                            <td>@item.AppUser.Name</td>
                             <td>@item.Destination.City</td>
                             <td>@item.CommentContent</td>
                             <td>@item.CommentDate.ToString("d")</td>
@@ -37,7 +37,7 @@
                                         <i class="bx bx-dots-vertical-rounded"></i>
                                     </button>
                                     <div class="dropdown-menu">
-                                        <a class="btn btn-info dropdown-item" asp-area="Admin"  asp-controller="Comment" asp-action="" asp-route-id="@item.CommentId"><i class="bx bx-search-alt me-1"></i> Detail</a>
+                                        <a class="btn btn-info dropdown-item" asp-area="Admin"  asp-controller="Comment" asp-action="DetailComment" asp-route-id="@item.CommentId"><i class="bx bx-search-alt me-1"></i> Detail</a>
                                         <a class="btn btn-danger dropdown-item" asp-area="Admin" asp-controller="Comment" asp-action="DeleteComment" asp-route-id="@item.CommentId"><i class="bx bx-trash me-1"></i> Delete</a>
                                     </div>
                                 </div>

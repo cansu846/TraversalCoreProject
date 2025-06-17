@@ -1,62 +1,126 @@
-﻿| Sorun                             | Etkisi                                                      |
-| --------------------------------- | ----------------------------------------------------------- |
-| `TagHelper` eksikse               | `asp-` ifadeleri düz yazı olarak kalır, validation çalışmaz |
-| JS dosyaları iki kere yüklendiyse | jQuery çakışır, validation çalışmaz                         |
-| `RedirectToAction` kullanırsan    | `ModelState` kaybolur, mesaj görünmez                       |
+﻿# 🌍 Traversal Core Project
 
-🔧 Client-side doğrulama için ne gerekir?
-FluentValidation'ı client-side'da çalıştırmak istiyorsan şu iki şartı sağlaman gerekir:
+**Traversal Core**, modern web teknolojileri kullanılarak ASP.NET Core 5 ile geliştirilen, kullanıcıların seyahat destinasyonlarını keşfedip yorum bırakabileceği, yönetici ve üye alanları bulunan, çok katmanlı ve gelişmiş bir turizm uygulamasıdır.
 
-✅ 1. ASP.NET Core FluentValidation.AspNetCore paketi eklenmiş olmalı
-(FluentValidation.AspNetCore zaten sunucu tarafı ile MVC’ye bağlar.)
+## 🚀 Teknolojiler ve Mimariler
 
-dotnet add package FluentValidation.AspNetCore
-✅ 2. jQuery Validation + Unobtrusive Scripts eklenmiş olmalı
-Client-side validasyon sadece jquery.validate ve jquery.validate.unobtrusive ile olur.
+### 🔧 Backend
+- **ASP.NET Core 5**
+- **Entity Framework Core**
+- **MSSQL Database**
+- **Fluent Validation** — Server-side validasyon kuralları
+- **Client-Side Validation** — jQuery Unobtrusive ile canlı doğrulama
+- **AutoMapper & DTO Katmanı** — Veri aktarımını izole ve güvenli yapar
+- **CQRS + MediatR** — Komut ve sorguların ayrılmasıyla temiz mimari
+- **Unit of Work Design Pattern** — Veritabanı işlemlerinde bütünlük sağlar
+- **SignalR** — Gerçek zamanlı bildirim sistemi (örneğin mesaj bildirimi)
+- **MailKit** — Şifre sıfırlama ve bildirim amaçlı e-posta gönderimi
+- **RapidAPI Entegrasyonu** — Dış servislerle etkileşim (ör. hava durumu, kur bilgisi)
+- **ASP.NET Identity** — Kullanıcı yönetimi, roller ve kimlik doğrulama
 
-Bu kütüphaneler sayesinde asp-validation-for, asp-validation-summary gibi etiketler çalışır.
+### 🎨 Frontend
+- **Razor View Engine**
+- **Bootstrap 4/5**
+- **AJAX ile Dinamik İşlemler** — Sayfa yenilenmeden veri güncelleme, silme vb.
+- **SweetAlert & Toast** — Kullanıcı dostu bildirim sistemi
 
-🔍 Peki FluentValidation otomatik client-side yapamaz mı?
-Hayır, FluentValidation:
+---
 
-ASP.NET’in ModelState sistemine entegre olur.
+## 🔐 Giriş & Yetkilendirme
 
-DataAnnotations gibi ValidationAttribute tabanlı değildir.
+- **Login / Register** işlemleri
+- **E-posta ile şifre sıfırlama** özelliği
+- **Rol bazlı yetkilendirme** (Admin / Member / SuperAdmin vb.)
+- **Rol oluşturma, silme ve atama** paneli
 
-Ama yine de ASP.NET Core’un ModelMetadata sistemine bağlanarak jquery-unobtrusive-validation ile uyumlu çalışabilir.
+---
 
-Ancak bu, FluentValidation’ın kendi başına browser’da çalıştığı anlamına gelmez. Tüm doğrulama, sunucuya POST edildiğinde yapılır.
+## 👥 Uygulama Alanları
 
-🟡 Özetle:
-Özellik	Gerekli mi?
-FluentValidation.AspNetCore	✅ Evet
-jquery.validate + unobtrusive	✅ Evet (Client-side için)
-@addTagHelper satırı	✅ Evet
-FluentValidation tek başına client-side	❌ Hayır
+Traversal Core projesi, farklı kullanıcı yetkilerine göre bölümlenmiş 3 ana alandan oluşur: **Admin**, **Member**, ve **Default (Genel Kullanıcı)**. Her alan, kullanıcının rolüne göre özel olarak yapılandırılmıştır.
 
-| Özellik                      | **FluentValidation**                     | **Client-Side Validation**                          |
-| ---------------------------- | ---------------------------------------- | --------------------------------------------------- |
-| **Nerede çalışır?**          | Sunucu tarafında (backend)               | Tarayıcıda (kullanıcının bilgisayarında)            |
-| **Ne zaman devreye girer?**  | Form gönderildikten sonra                | Form gönderilmeden önce, yazarken                   |
-| **Performans**               | Daha geç çalışır                         | Anında uyarı verir                                  |
-| **Kurallar nerede yazılır?** | C# kodu içinde, özel Validator sınıfında | HTML attribute'lar ile (`required`, `minlength` vs) |
-| **Gelişmiş kurallar?**       | ✔ Yapılabilir (örneğin şifre == tekrar)  | ❌ Sınırlı (örneğin şifre eşleşmesi zordur)          |
-| **JavaScript gerekli mi?**   | Hayır                                    | Evet (jQuery + Unobtrusive Validation gerekir)      |
+---
 
-!!! Modelin üzerinde DataAnnotations olmasa bile FluentValidation bu hataları ModelState'e ekler
-ASP.NET Core, ModelState üzerinden FluentValidation mesajlarını alır ve asp-validation-for etiketleri ile client’a gönderir. Böylece tarayıcıda gösterilir.
+### 🔒 Admin Area
 
-🧠 Peki "anında (yazarken)" mı gösterir?
-Hayır, FluentValidation sunucu taraflı çalışır.
+Yalnızca yöneticilerin erişebildiği gelişmiş yönetim panelidir. Aşağıdaki işlemler yapılabilir:
 
-Client-side’da anında göstermek için DataAnnotation ya da jquery.validate kuralları gerekir.
+- **Kullanıcı Yönetimi** – Üyelerin görüntülenmesi ve düzenlenmesi  
+- **Account** – Yönetici hesap ayarları  
+- **Announcement** – Duyuru ekleme ve listeleme  
+- **API Movie** – Film verilerinin RapidAPI üzerinden alınması  
+- **Booking** – Rezervasyon yönetimi  
+- **City (AJAX ile)** – Şehir işlemleri dinamik olarak gerçekleştirilir  
+- **Comment** – Kullanıcı yorumlarını inceleme ve silme  
+- **Contact** – İletişim mesajlarını görüntüleme  
+- **Dashboard** – Genel istatistik ve yönetim ekranı  
+- **Destination** – Destinasyon ekleme, silme, güncelleme  
+- **Guide** – Rehber bilgilerini yönetme  
+- **Mail** – Kullanıcılara e-posta gönderimi  
+- **Visitor API** – Ziyaretçi verilerinin API ile entegrasyonu  
+- **Rol Yönetimi** – Rol ekleme, silme, kullanıcıya rol atama  
+- **Gerçek Zamanlı Bildirim** – SignalR ile anlık bildirimler  
 
-Ama:
+---
 
-✅ Form gönderildiğinde, FluentValidation hataları da client-side’da <span asp-validation-for="..."> içinde görünür.
-✅ Bu yüzden FluentValidation + jQuery validation birlikte çalışır gibi davranır.
+### 👤 Member Area
 
-Soru	Cevap
-FluentValidation hataları ekranda gösterilir mi?	✅ Evet, asp-validation-for ve JS kütüphaneleri ile
-FluentValidation yazarken anında uyarı verir mi?	❌ Hayır, form gönderildikten sonra çalışır
-Client-side validasyon için ek bir şey yazmalı mıyım?	❌ Hayır, FluentValidation kuralları yeterlidir; ama JS kütüphaneleri olmalı
+Giriş yapmış üyelere özel kullanıcı panelidir. Aşağıdaki işlemler yapılabilir:
+
+- **Dashboard** – Kullanıcıya özel özet ekran  
+- **Comment** – Yorum ekleme ve silme  
+- **Destination** – Gezilecek yerleri listeleme  
+- **Message** – Kullanıcılar arası mesajlaşma  
+- **Profile** – Kişisel bilgileri güncelleme  
+- **Rezervation** – Yeni rezervasyon oluşturma, geçmiş rezervasyonları görüntüleme  
+
+---
+
+### 🌐 Default (Genel Kullanıcı Alanı)
+
+Giriş yapmamış ziyaretçiler için açık olan genel site alanıdır:
+
+- **Login** – Kullanıcı girişi  
+- **Guide** – Rehberleri listeleme  
+- **Destination Listesi** – Seyahat rotalarını gezme  
+- **Comment** – Genel yorum görüntüleme  
+- **Contact** – İletişim formu ile mesaj gönderme  
+- **Information** – Hakkımızda / Bilgi sayfaları  
+- **Şifre Değiştirme ve Profil** – (Giriş sonrası) kullanıcı bilgilerini güncelleme  
+
+---
+## 💬 Özellikler
+
+- ✅ Kullanıcılar destinasyonlara **yorum bırakabilir**, listeleyebilir
+- ✅ **Ajax** ile form gönderimi ve yorum silme işlemleri
+- ✅ **DTO yapısı** sayesinde veri güvenliği ve hızı
+- ✅ **CQRS & MediatR** ile yazılım sorumlulukları ayrıştırılmıştır
+- ✅ **Fluent Validation** ile model düzeyinde kurallar uygulanır
+- ✅ **SignalR ile gerçek zamanlı bildirim** gönderilebilir
+- ✅ **E-posta doğrulama ve şifre sıfırlama** işlemleri
+- ✅ **Unit of Work** ile repository işlemleri yönetilir
+
+---
+
+## 🧪 Kurulum
+
+1. Projeyi klonlayın:
+   ```bash
+   git clone https://github.com/kullaniciadi/traversal-core.git
+
+2. appsettings.json dosyasındaki ConnectionString ve Mail ayarlarını güncelleyin.
+
+3. Database oluşturmak için:
+ ```bash
+	Update-Database 
+
+4. Uygulamayı çalıştırın:
+ ```bash
+	dotnet run
+
+📸 Görseller
+
+
+
+📬 İletişim
+Projeyle ilgili geri bildirimde bulunmak için Issues kısmını kullanabilirsiniz.

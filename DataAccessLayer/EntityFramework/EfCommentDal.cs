@@ -16,7 +16,7 @@ namespace DataAccessLayer.EntityFramework
         public List<Comment> CommentListWithDestination()
         {
             using var context = new Context();
-            return context.Comments.Include(x=>x.Destination).ToList();
+            return context.Comments.Include(x=>x.Destination).Include(x => x.AppUser).ToList();
         }
 
         public List<Comment> CommentListWithDestinationAndAppUser(int destinationId)

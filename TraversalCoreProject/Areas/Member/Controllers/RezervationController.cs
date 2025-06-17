@@ -36,7 +36,7 @@ namespace TraversalCoreProject.Areas.Member.Controllers
         [HttpGet]
         public async Task<IActionResult> MyOldReservation()
         {
-            var user = _userManager.FindByNameAsync(User.Identity.Name);
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
             var values = _reservationService.GetListWithReservationByPrevious(user.Id);
             return View(values);
         }
